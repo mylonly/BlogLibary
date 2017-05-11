@@ -105,201 +105,6 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="14945010337427.html">
-                
-                  <h1>利用树莓派搭建迅雷远程下载服务器</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>树莓派系统为Raspberry Pi</p>
-</blockquote>
-
-<ol>
-<li><p>树莓派安装迅雷路由器固件<br/>
-可以在迅雷论坛上下载到最新的固件:<a href="http://luyou.xunlei.com/">官网论坛</a>,记得要下arm版本的固件<code>armel_v5te_glibc</code><br/>
-或者下载我共享的这个<a href="http://pan.baidu.com/s/1nvvoX7b">Xware1.0.31_armel_v5te_glibc</a> 提取码:e223<br/>
-在树莓派上解压到某个目录，例如我的是<code>/root/xunlei</code>下面</p>
-
-<pre><code class="language-Shell">unzip Xware1.0.31_armel_v5te_glibc.zip -d /root/xunlei
-</code></pre>
-
-<p>进入<code>/root/xunlei</code>目录 执行:</p>
-
-<pre><code class="language-Shell">./portal
-</code></pre>
-
-<p>稍等片刻，会在最后输出一个激活码，类似下图中涂红的部分</p>
-
-<p><img src="http://pic.mylonly.com/2016-07-13_15:19:59.jpg" alt="2016-07-13_15:19:59.jpg"/>  </p></li>
-<li><p>在迅雷远程下载页面绑定树莓派<br/>
-登录<a href="http://yuancheng.xunlei.com/">迅雷远程下载主页</a>,登录之后，左侧会有一个添加按钮，点击添加按钮，弹出如下界面:<br/>
-<img src="http://pic.mylonly.com/2016-07-13_15:22:45.jpg" alt="2016-07-13_15:22:45.jpg"/></p>
-
-<p>将树莓派上获得的激活码填入框中，点击<code>绑定</code>后左侧就会出现树莓派对应的设备列表了，但是，如果我们此时就在右侧点击<code>新建</code>之后会发现,弹出的新建页面中会提示找不到挂载磁盘，如下图：</p>
-
-<p><img src="http://pic.mylonly.com/2016-07-13_15:25:18.jpg" alt="2016-07-13_15:25:18.jpg"/></p></li>
-<li><p>自定义迅雷的下载目录</p>
-
-<p>进入<code>/mnt</code>目录，创建目录TDDOWNLOAD(名字随意)<br/>
-执行命令:</p>
-
-<pre><code class="language-Shell">mount --bind /data/TDDOWNLOAD /mnt/TDDOWNLOAD
-</code></pre>
-
-<p>其中/data/TDDOWNLOAD就是自定义的下载目录，你可以指定为其他任何目录。</p>
-
-<p>然后再刚刚迅雷固件的解压目录下创建目录<code>etc</code>,同时创建文件<code>thunder_mounts.cfg</code>,编辑此文件</p>
-
-<pre><code class="language-Shell">vim /root/xunlei/etc/thunder_mounts.cfg
-</code></pre>
-
-<p>内容为:</p>
-
-<pre><code class="language-Shell">avaliable_mount_path_pattern
-{
-    /mnt/TDDOWNLOAD
-}
-</code></pre>
-
-<p>保存后重启迅雷路由器固件:</p>
-
-<pre><code class="language-Shell">./root/xunlei/portal
-</code></pre>
-
-<p>再进入远程下载界面新建下载就没有了没挂载磁盘的提示了</p></li>
-<li><p>迅雷路由器固件开机启动</p>
-
-<p>在/etc/init.d/下新建xunlei脚本，写入:</p>
-
-<pre><code>```Shell
-#!/bin/sh
-#
-# Xunlei initscript
-#
-### BEGIN INIT INFO
-# Provides:          xunlei
-# Required-Start:    $network $local_fs $remote_fs
-# Required-Stop::    $network $local_fs $remote_fs
-# Should-Start:      $all
-# Should-Stop:       $all
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: Start xunlei at boot time
-# Description:       A downloader
-### END INIT INFO
-
-do_start()
-{
-        ./root/xunlei/portal
-}
-
-do_stop()
-{
-        ./root/xunlei/portal -s
-}
-
-case &quot;$1&quot; in
-  start)
-    do_start
-    ;;
-  stop)
-    do_stop
-    ;;
-esac
-``` 
-</code></pre>
-
-<p>然后将该脚本加入默认自启动中</p>
-
-<pre><code class="language-Shell">update-rc.d xunlei defaults
-</code></pre></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/5/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14945010159790.html">
-                
-                  <h1>CentOS中添加Swap交换文件</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>1.先检查是否存在Swap文件</p>
-
-<pre><code class="language-Bash">swapon -s #返回的信息为空，说明没有其他交换文件
-</code></pre>
-
-<p>2.创建一个Swap文件，使用dd命令</p>
-
-<pre><code class="language-Bash">##of后面是swap文件的路径，可以自定义，count是swap文件的大小，推荐为内存的2倍
-dd if=/dev/zero of=/home/swap bs=1024 count=1024000
-</code></pre>
-
-<p>3.将swap文件转换成swap格式</p>
-
-<pre><code class="language-Bash">mkswap /home/swap
-</code></pre>
-
-<p>4.将swap文件挂载成swap分区</p>
-
-<pre><code class="language-Bash">swapon /home/swap #创建完成后可以用`free -m`看看是否成功
-</code></pre>
-
-<p>5.让swap文件自动挂载</p>
-
-<pre><code class="language-Bash">vim /etc/fstab 
-#在文件末尾加上下面的命令
-/home/swap swap swap default 0 0 
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/5/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
                 <a class="clearlink" href="14945009892942.html">
                 
                   <h1>利用Github的Webhook功能和Node.js完成项目的自动部署</h1>
@@ -411,6 +216,8 @@ echo &quot;Finished.&quot;
                   <div class="more-right right">
                   <span class="comments">
                       
+                        <a href="http://www.mylonly.com/14945009892942.html#disqus_thread">comments</a>
+                      
 
                        
                   </span>
@@ -475,6 +282,8 @@ cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
                   </div>
                   <div class="more-right right">
                   <span class="comments">
+                      
+                        <a href="http://www.mylonly.com/14944978089747.html#disqus_thread">comments</a>
                       
 
                        
@@ -655,6 +464,160 @@ test.simpleDescription()
                   <div class="more-right right">
                   <span class="comments">
                       
+                        <a href="http://www.mylonly.com/14944977278738.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14944977101213.html">
+                
+                  <h1>Swift学习要点-基础部分</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="http://pic.mylonly.com/2016-06-29_15:09:33.jpg" alt="2016-06-29_15:09:33.jpg"/></p>
+
+<blockquote>
+<p>这一系列的文章都是我本人在学习Swift语法过程中认为需要注意的语法部分，所以介绍的并不会很完整。</p>
+</blockquote>
+
+<ol>
+<li><p>print函数:<code>print(_:separator:terminator:)</code>,默认情况下print会以换行符当做结束符，此外你可以通过terminator参数更改结束符，例如:</p>
+
+<pre><code class="language-Swift">print(&quot;正常的print结尾时换行符&quot;)                  //输出:正常的print结尾时换行符\n
+print(&quot;没有换行符的print&quot;,terminator:&quot;&quot;)         //输出:没有换行符的print
+print(&quot;稀奇古怪的结束符都可以&quot;,terminator:&quot;(^^)&quot;)  //输出:稀奇古怪的结束符都可以(^^)
+</code></pre></li>
+<li><p>数值类字面量，包括整数和浮点数可以添加额外的零并且包含下划线，并不会影响字面量的值</p>
+
+<pre><code class="language-Swift">let paddedDouble = 000123.456
+let oneMillion = 1_000_000
+let justOverOneMillion = 1_000_000.000_000_1
+</code></pre></li>
+<li><p>可以通过<code>typealias</code>关键字来定义类型的别名</p>
+
+<pre><code class="language-Swift">typealias AudioSample = UInt16
+var maxAmplitudeFound = AudioSample.min // maxAmplitudeFound 现在是 0
+</code></pre></li>
+<li><p>不同的数据类型之间不会隐式转换,必须要用类型名加上括号的方式进入显示转换,其中显示转换成字符串除了使用String()之外，还可以直接在字符串中适用(其他类型值)来转换</p>
+
+<pre><code class="language-Swift">var maxValue = UInt8.max
+var max64Value = Int64.max
+
+max64Value = maxValue  //Error:Cannot assign value of type &#39;UInt8&#39; to type &#39;Int64&#39;
+max64Value = Int64(maxValue) //Ok
+
+let number = 3
+var str1 = String(number) //str1 = &quot;3&quot;
+var str2 = &quot;\(number)&quot;    //str2 = &quot;3&quot; 
+</code></pre></li>
+<li><p>如果你只需要一部分元组值，分解的时候可以把要忽略的部分用下划线（_）标记：</p>
+
+<pre><code class="language-Swift">let http404Error = (404, &quot;Not Found&quot;)  // http404Error 的类型是 (Int, String)，值是 (404, &quot;Not Found&quot;)
+let (justTheStatusCode, _) = http404Error
+print(&quot;The status code is \(justTheStatusCode)&quot;) // 输出 &quot;The status code is 404&quot;
+</code></pre></li>
+<li><p>Swift 的<code>nil</code>和 Objective-C 中的<code>nil</code>并不一样。在 Objective-C 中，<code>nil</code>是一个指向不存在对象的指针。在 Swift 中，<code>nil</code>不是指针——它是一个确定的值，用来表示值缺失。任何类型的可选状态都可以被设置为<code>nil</code>，不只是对象类型。</p>
+
+<pre><code class="language-Swift">var serverResponseCode: Int? = 404
+// serverResponseCode 包含一个可选的 Int 值 404
+serverResponseCode = nil
+// serverResponseCode 现在不包含值
+</code></pre></li>
+<li><p>使用!来强制解析值之前，一定要确定可选包含一个非nil的值，否则当强制解析一个nil值时会报错。</p>
+
+<pre><code class="language-Swift">var option:Int?    //没有初始值的可选类型变量默认值为nil
+var str = &quot;\(option)&quot; //输出:&quot;nil&quot;
+str = &quot;\(option!)&quot;    //Error
+</code></pre></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://www.mylonly.com/14944977101213.html#disqus_thread">comments</a>
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14944975766543.html">
+                
+                  <h1>CocoaPods master仓库替换为国内源</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="http://pic.mylonly.com/2016-06-29_1396084357114.jpg" alt="2016-06-29_1396084357114.jpg"/><br/>
+国内用CocoaPods 实在是太蛋疼了，一个pod update都要等好久，之前唐巧博客里面推荐的那个国内源已经不可用了，还好今天在V2EX上看到有人提供了别的CocoaPods源。</p>
+
+<ol>
+<li><a href="https://git.coding.net/hging/Specs.git">https://git.coding.net/hging/Specs.git</a></li>
+<li><a href="http://git.oschina.net/akuandev/Specs">http://git.oschina.net/akuandev/Specs</a></li>
+</ol>
+
+<p>执行如下命令替换Pods源</p>
+
+<pre><code class="language-Bash">$ pod repo remove master
+$ pod repo add master &#39;http://git.oschina.net/akuandev/Specs.git&#39; 
+</code></pre>
+
+<p> <br/>
+仅仅这样使用pod update时发现仍然会从一个master-1这个官方源中clone</p>
+
+<pre><code class="language-Bash">tianxianggendeMacBook-Air:upyun-batch-upload mylonly$ pod install
+Creating shallow clone of spec repo `master-1` from `https://github.com/CocoaPods/Specs.git`
+</code></pre>
+
+<p> <br/>
+这时候需要在Podfile中加入source命令，就可以直接从国内源更新了。</p>
+
+<pre><code class="language- Bash">source &#39;http://git.oschina.net/akuandev/Specs.git&#39;
+platform :ios, &#39;6.0&#39;
+pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+                        <a href="http://www.mylonly.com/14944975766543.html#disqus_thread">comments</a>
+                      
 
                        
                   </span>
@@ -739,18 +702,6 @@ test.simpleDescription()
 	      
 		      
 			      <li class="post">
-			        <a href="14945011765615.html">VSCode1.0更换回英文版本</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="14945011548149.html">简单Scrapy爬虫</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="14945011465578.html">利用pxssh暴力破解ssh密码</a>
 			      </li>
 		     
@@ -764,6 +715,18 @@ test.simpleDescription()
 		      
 			      <li class="post">
 			        <a href="14945011244738.html">Scrapy抓取Ajax动态页面</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14945011166438.html">Scrapy——crawlSpider爬虫</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14945011027951.html">Python利用Pexpect模拟ssh交互</a>
 			      </li>
 		     
 		  
@@ -812,6 +775,27 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
       </div>
     </div>
 
+
+<script type="text/javascript">
+    var disqus_shortname = 'mylonly'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'mylonly'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
   
     
 
@@ -834,7 +818,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
     
 
-
+<script id="dsq-count-scr" src="//mylonly.disqus.com/count.js" async></script>
 
   </body>
 </html>

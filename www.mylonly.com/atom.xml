@@ -4,107 +4,13 @@
   <title><![CDATA[独自一人]]></title>
   <link href="http://www.mylonly.com/atom.xml" rel="self"/>
   <link href="http://www.mylonly.com/"/>
-  <updated>2017-05-11T19:40:26+08:00</updated>
+  <updated>2017-05-11T21:59:47+08:00</updated>
   <id>http://www.mylonly.com/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
-  
-  <entry>
-    <title type="html"><![CDATA[VSCode1.0更换回英文版本]]></title>
-    <link href="http://www.mylonly.com/14945011765615.html"/>
-    <updated>2017-05-11T19:12:56+08:00</updated>
-    <id>http://www.mylonly.com/14945011765615.html</id>
-    <content type="html"><![CDATA[
-<p>VSCode1.0更新之后带来了本地语言的支持，但是，你怎么能连命令行的命令都汉化了？<br/>
-<img src="http://pic.mylonly.com/2016-05-04-14623468922061.jpg" alt=""/><br/>
-<code>表示实在受不了每次同步代码 选中git:拉的感觉，还有安装插件的命令也不再是install extension了，而是安装扩展</code></p>
-
-<h3 id="toc_0">将VSCode的语言修改为英文</h3>
-
-<p><a href="https://code.visualstudio.com/docs/customization/locales">官方文档设置语言</a></p>
-
-<p>快捷键Command+Shift+P（Win下为Control）打开命令行工具,输入<code>设置语言</code>，会打开一个locale.json的文件，如下面所示</p>
-
-<pre><code>{
-    // 定义 VSCode 的显示语言。
-    // 请参阅 http://go.microsoft.com/fwlink/?LinkId=761051，了解支持的语言列表。
-    // 要更改值需要重启 VSCode。
-    &quot;locale&quot;:&quot;zh-CN&quot; 
-}
-</code></pre>
-
-<p>将locale的值改为en-US之后重启VSCode就恢复到英文版本的了!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[简单Scrapy爬虫]]></title>
-    <link href="http://www.mylonly.com/14945011548149.html"/>
-    <updated>2017-05-11T19:12:34+08:00</updated>
-    <id>http://www.mylonly.com/14945011548149.html</id>
-    <content type="html"><![CDATA[
-<p>只是个小小的demo，自己测试了下，总共down了20几张图片</p>
-
-<pre><code class="language-Python">#coding: utf-8 #############################################################
-# File Name: spiders/wallpaper.py
-# Author: mylonly
-# mail: tianxianggen@gmail.com
-#Blog:www.mylonly.com
-# Created Time: 2014年09月01日 星期一 14时20分07秒
-#########################################################################
-#!/usr/bin/python
-import urllib2
-import os
- 
-from scrapy.contrib.spiders import CrawlSpider,Rule
-from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
-from scrapy.selector import Selector
-from mylonly.items import wallpaperItem
-from scrapy.http import Request
- 
-class wallpaper(CrawlSpider):
-    name = &quot;wallpaperSpider&quot;
-    allowed_domains = [&#39;sj.zol.com.cn&#39;]
-    start_urls = [&#39;http://sj.zol.com.cn/&#39;]
-    number = 0
-    rules = (
-    Rule(SgmlLinkExtractor(allow = (&#39;detail_\d{4}_\d{5}\.html&#39;)),callback =     &#39;parse_image&#39;,follow=True),)
-    def parse_image(self,response):
-        self.log(&#39;hi,this is an item page! %s&#39; % response.url)
-        sel = Selector(response)
-        sites = sel.xpath(&quot;//div[@class=&#39;wrapper        mt15&#39;]//dd[@id=&#39;tagfbl&#39;]//a[@target=&#39;_blank&#39;]/@href&quot;).extract()
-        for site in sites:
-        url = &#39;http://sj.zol.com.cn%s&#39; % (site)
-        print &#39;one page:&#39;,url
-        return Request(url,callback = self.parse_href)
-    def parse_href(self,response):
-        print &#39;I am in:&#39;,response.url
-        sel = Selector(response)
-        src = sel.xpath(&quot;//body//img/@src&quot;).extract()[0]
-        self.download(src)
- 
-    def download(self,url):
-        self.number += 1
-        savePath = &#39;/mnt/python_image/%d.jpg&#39; % (self.number)
-        print &#39;正在下载...&#39;,url
-        try:
-            u = urllib2.urlopen(url)
-            r = u.read()
-            downloadFile = open(savePath,&#39;wb&#39;)
-            downloadFile.write(r)
-            u.close()
-            downloadFile.close()
-        except:
-            print savePath,&#39;can not download.&#39;
- 
-</code></pre>
-
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[利用pxssh暴力破解ssh密码]]></title>
@@ -1673,6 +1579,100 @@ Creating shallow clone of spec repo `master-1` from `https://github.com/CocoaPod
 <pre><code class="language- Bash">source &#39;http://git.oschina.net/akuandev/Specs.git&#39;
 platform :ios, &#39;6.0&#39;
 pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[VSCode1.0更换回英文版本]]></title>
+    <link href="http://www.mylonly.com/14945011765615.html"/>
+    <updated>2017-05-11T19:12:56+08:00</updated>
+    <id>http://www.mylonly.com/14945011765615.html</id>
+    <content type="html"><![CDATA[
+<p>VSCode1.0更新之后带来了本地语言的支持，但是，你怎么能连命令行的命令都汉化了？<br/>
+<img src="http://pic.mylonly.com/2016-05-04-14623468922061.jpg" alt=""/><br/>
+<code>表示实在受不了每次同步代码 选中git:拉的感觉，还有安装插件的命令也不再是install extension了，而是安装扩展</code></p>
+
+<h3 id="toc_0">将VSCode的语言修改为英文</h3>
+
+<p><a href="https://code.visualstudio.com/docs/customization/locales">官方文档设置语言</a></p>
+
+<p>快捷键Command+Shift+P（Win下为Control）打开命令行工具,输入<code>设置语言</code>，会打开一个locale.json的文件，如下面所示</p>
+
+<pre><code>{
+    // 定义 VSCode 的显示语言。
+    // 请参阅 http://go.microsoft.com/fwlink/?LinkId=761051，了解支持的语言列表。
+    // 要更改值需要重启 VSCode。
+    &quot;locale&quot;:&quot;zh-CN&quot; 
+}
+</code></pre>
+
+<p>将locale的值改为en-US之后重启VSCode就恢复到英文版本的了!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[简单Scrapy爬虫]]></title>
+    <link href="http://www.mylonly.com/14945011548149.html"/>
+    <updated>2017-05-11T19:12:34+08:00</updated>
+    <id>http://www.mylonly.com/14945011548149.html</id>
+    <content type="html"><![CDATA[
+<p>只是个小小的demo，自己测试了下，总共down了20几张图片</p>
+
+<pre><code class="language-Python">#coding: utf-8 #############################################################
+# File Name: spiders/wallpaper.py
+# Author: mylonly
+# mail: tianxianggen@gmail.com
+#Blog:www.mylonly.com
+# Created Time: 2014年09月01日 星期一 14时20分07秒
+#########################################################################
+#!/usr/bin/python
+import urllib2
+import os
+ 
+from scrapy.contrib.spiders import CrawlSpider,Rule
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.selector import Selector
+from mylonly.items import wallpaperItem
+from scrapy.http import Request
+ 
+class wallpaper(CrawlSpider):
+    name = &quot;wallpaperSpider&quot;
+    allowed_domains = [&#39;sj.zol.com.cn&#39;]
+    start_urls = [&#39;http://sj.zol.com.cn/&#39;]
+    number = 0
+    rules = (
+    Rule(SgmlLinkExtractor(allow = (&#39;detail_\d{4}_\d{5}\.html&#39;)),callback =     &#39;parse_image&#39;,follow=True),)
+    def parse_image(self,response):
+        self.log(&#39;hi,this is an item page! %s&#39; % response.url)
+        sel = Selector(response)
+        sites = sel.xpath(&quot;//div[@class=&#39;wrapper        mt15&#39;]//dd[@id=&#39;tagfbl&#39;]//a[@target=&#39;_blank&#39;]/@href&quot;).extract()
+        for site in sites:
+        url = &#39;http://sj.zol.com.cn%s&#39; % (site)
+        print &#39;one page:&#39;,url
+        return Request(url,callback = self.parse_href)
+    def parse_href(self,response):
+        print &#39;I am in:&#39;,response.url
+        sel = Selector(response)
+        src = sel.xpath(&quot;//body//img/@src&quot;).extract()[0]
+        self.download(src)
+ 
+    def download(self,url):
+        self.number += 1
+        savePath = &#39;/mnt/python_image/%d.jpg&#39; % (self.number)
+        print &#39;正在下载...&#39;,url
+        try:
+            u = urllib2.urlopen(url)
+            r = u.read()
+            downloadFile = open(savePath,&#39;wb&#39;)
+            downloadFile.write(r)
+            u.close()
+            downloadFile.close()
+        except:
+            print savePath,&#39;can not download.&#39;
+ 
 </code></pre>
 
 ]]></content>

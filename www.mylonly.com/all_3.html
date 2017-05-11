@@ -105,69 +105,32 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="14944977101213.html">
+                <a class="clearlink" href="14945011765615.html">
                 
-                  <h1>Swift学习要点-基础部分</h1>
+                  <h1>VSCode1.0更换回英文版本</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="http://pic.mylonly.com/2016-06-29_15:09:33.jpg" alt="2016-06-29_15:09:33.jpg"/></p>
+                        	<p>VSCode1.0更新之后带来了本地语言的支持，但是，你怎么能连命令行的命令都汉化了？<br/>
+<img src="http://pic.mylonly.com/2016-05-04-14623468922061.jpg" alt=""/><br/>
+<code>表示实在受不了每次同步代码 选中git:拉的感觉，还有安装插件的命令也不再是install extension了，而是安装扩展</code></p>
 
-<blockquote>
-<p>这一系列的文章都是我本人在学习Swift语法过程中认为需要注意的语法部分，所以介绍的并不会很完整。</p>
-</blockquote>
+<h3 id="toc_0">将VSCode的语言修改为英文</h3>
 
-<ol>
-<li><p>print函数:<code>print(_:separator:terminator:)</code>,默认情况下print会以换行符当做结束符，此外你可以通过terminator参数更改结束符，例如:</p>
+<p><a href="https://code.visualstudio.com/docs/customization/locales">官方文档设置语言</a></p>
 
-<pre><code class="language-Swift">print(&quot;正常的print结尾时换行符&quot;)                  //输出:正常的print结尾时换行符\n
-print(&quot;没有换行符的print&quot;,terminator:&quot;&quot;)         //输出:没有换行符的print
-print(&quot;稀奇古怪的结束符都可以&quot;,terminator:&quot;(^^)&quot;)  //输出:稀奇古怪的结束符都可以(^^)
-</code></pre></li>
-<li><p>数值类字面量，包括整数和浮点数可以添加额外的零并且包含下划线，并不会影响字面量的值</p>
+<p>快捷键Command+Shift+P（Win下为Control）打开命令行工具,输入<code>设置语言</code>，会打开一个locale.json的文件，如下面所示</p>
 
-<pre><code class="language-Swift">let paddedDouble = 000123.456
-let oneMillion = 1_000_000
-let justOverOneMillion = 1_000_000.000_000_1
-</code></pre></li>
-<li><p>可以通过<code>typealias</code>关键字来定义类型的别名</p>
+<pre><code>{
+    // 定义 VSCode 的显示语言。
+    // 请参阅 http://go.microsoft.com/fwlink/?LinkId=761051，了解支持的语言列表。
+    // 要更改值需要重启 VSCode。
+    &quot;locale&quot;:&quot;zh-CN&quot; 
+}
+</code></pre>
 
-<pre><code class="language-Swift">typealias AudioSample = UInt16
-var maxAmplitudeFound = AudioSample.min // maxAmplitudeFound 现在是 0
-</code></pre></li>
-<li><p>不同的数据类型之间不会隐式转换,必须要用类型名加上括号的方式进入显示转换,其中显示转换成字符串除了使用String()之外，还可以直接在字符串中适用(其他类型值)来转换</p>
-
-<pre><code class="language-Swift">var maxValue = UInt8.max
-var max64Value = Int64.max
-
-max64Value = maxValue  //Error:Cannot assign value of type &#39;UInt8&#39; to type &#39;Int64&#39;
-max64Value = Int64(maxValue) //Ok
-
-let number = 3
-var str1 = String(number) //str1 = &quot;3&quot;
-var str2 = &quot;\(number)&quot;    //str2 = &quot;3&quot; 
-</code></pre></li>
-<li><p>如果你只需要一部分元组值，分解的时候可以把要忽略的部分用下划线（_）标记：</p>
-
-<pre><code class="language-Swift">let http404Error = (404, &quot;Not Found&quot;)  // http404Error 的类型是 (Int, String)，值是 (404, &quot;Not Found&quot;)
-let (justTheStatusCode, _) = http404Error
-print(&quot;The status code is \(justTheStatusCode)&quot;) // 输出 &quot;The status code is 404&quot;
-</code></pre></li>
-<li><p>Swift 的<code>nil</code>和 Objective-C 中的<code>nil</code>并不一样。在 Objective-C 中，<code>nil</code>是一个指向不存在对象的指针。在 Swift 中，<code>nil</code>不是指针——它是一个确定的值，用来表示值缺失。任何类型的可选状态都可以被设置为<code>nil</code>，不只是对象类型。</p>
-
-<pre><code class="language-Swift">var serverResponseCode: Int? = 404
-// serverResponseCode 包含一个可选的 Int 值 404
-serverResponseCode = nil
-// serverResponseCode 现在不包含值
-</code></pre></li>
-<li><p>使用!来强制解析值之前，一定要确定可选包含一个非nil的值，否则当强制解析一个nil值时会报错。</p>
-
-<pre><code class="language-Swift">var option:Int?    //没有初始值的可选类型变量默认值为nil
-var str = &quot;\(option)&quot; //输出:&quot;nil&quot;
-str = &quot;\(option!)&quot;    //Error
-</code></pre></li>
-</ol>
+<p>将locale的值改为en-US之后重启VSCode就恢复到英文版本的了!</p>
 
                         
                       </div>
@@ -176,14 +139,16 @@ str = &quot;\(option!)&quot;    //Error
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/5/11</span>
+                    <span class="date">2016/5/11</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
+          					    <span class="posted-in"><a href='tools.html'>Tools</a></span>
           				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
+                      
+                        <a href="http://www.mylonly.com/14945011765615.html#disqus_thread">comments</a>
                       
 
                        
@@ -193,40 +158,67 @@ str = &quot;\(option!)&quot;    //Error
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="14944975766543.html">
+                <a class="clearlink" href="14945011548149.html">
                 
-                  <h1>CocoaPods master仓库替换为国内源</h1>
+                  <h1>简单Scrapy爬虫</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="http://pic.mylonly.com/2016-06-29_1396084357114.jpg" alt="2016-06-29_1396084357114.jpg"/><br/>
-国内用CocoaPods 实在是太蛋疼了，一个pod update都要等好久，之前唐巧博客里面推荐的那个国内源已经不可用了，还好今天在V2EX上看到有人提供了别的CocoaPods源。</p>
+                        	<p>只是个小小的demo，自己测试了下，总共down了20几张图片</p>
 
-<ol>
-<li><a href="https://git.coding.net/hging/Specs.git">https://git.coding.net/hging/Specs.git</a></li>
-<li><a href="http://git.oschina.net/akuandev/Specs">http://git.oschina.net/akuandev/Specs</a></li>
-</ol>
-
-<p>执行如下命令替换Pods源</p>
-
-<pre><code class="language-Bash">$ pod repo remove master
-$ pod repo add master &#39;http://git.oschina.net/akuandev/Specs.git&#39; 
-</code></pre>
-
-<p> <br/>
-仅仅这样使用pod update时发现仍然会从一个master-1这个官方源中clone</p>
-
-<pre><code class="language-Bash">tianxianggendeMacBook-Air:upyun-batch-upload mylonly$ pod install
-Creating shallow clone of spec repo `master-1` from `https://github.com/CocoaPods/Specs.git`
-</code></pre>
-
-<p> <br/>
-这时候需要在Podfile中加入source命令，就可以直接从国内源更新了。</p>
-
-<pre><code class="language- Bash">source &#39;http://git.oschina.net/akuandev/Specs.git&#39;
-platform :ios, &#39;6.0&#39;
-pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
+<pre><code class="language-Python">#coding: utf-8 #############################################################
+# File Name: spiders/wallpaper.py
+# Author: mylonly
+# mail: tianxianggen@gmail.com
+#Blog:www.mylonly.com
+# Created Time: 2014年09月01日 星期一 14时20分07秒
+#########################################################################
+#!/usr/bin/python
+import urllib2
+import os
+ 
+from scrapy.contrib.spiders import CrawlSpider,Rule
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.selector import Selector
+from mylonly.items import wallpaperItem
+from scrapy.http import Request
+ 
+class wallpaper(CrawlSpider):
+    name = &quot;wallpaperSpider&quot;
+    allowed_domains = [&#39;sj.zol.com.cn&#39;]
+    start_urls = [&#39;http://sj.zol.com.cn/&#39;]
+    number = 0
+    rules = (
+    Rule(SgmlLinkExtractor(allow = (&#39;detail_\d{4}_\d{5}\.html&#39;)),callback =     &#39;parse_image&#39;,follow=True),)
+    def parse_image(self,response):
+        self.log(&#39;hi,this is an item page! %s&#39; % response.url)
+        sel = Selector(response)
+        sites = sel.xpath(&quot;//div[@class=&#39;wrapper        mt15&#39;]//dd[@id=&#39;tagfbl&#39;]//a[@target=&#39;_blank&#39;]/@href&quot;).extract()
+        for site in sites:
+        url = &#39;http://sj.zol.com.cn%s&#39; % (site)
+        print &#39;one page:&#39;,url
+        return Request(url,callback = self.parse_href)
+    def parse_href(self,response):
+        print &#39;I am in:&#39;,response.url
+        sel = Selector(response)
+        src = sel.xpath(&quot;//body//img/@src&quot;).extract()[0]
+        self.download(src)
+ 
+    def download(self,url):
+        self.number += 1
+        savePath = &#39;/mnt/python_image/%d.jpg&#39; % (self.number)
+        print &#39;正在下载...&#39;,url
+        try:
+            u = urllib2.urlopen(url)
+            r = u.read()
+            downloadFile = open(savePath,&#39;wb&#39;)
+            downloadFile.write(r)
+            u.close()
+            downloadFile.close()
+        except:
+            print savePath,&#39;can not download.&#39;
+ 
 </code></pre>
 
                         
@@ -236,14 +228,16 @@ pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2017/5/11</span>
+                    <span class="date">2016/5/11</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
+          					    <span class="posted-in"><a href='python.html'>Python</a></span>
           				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
+                      
+                        <a href="http://www.mylonly.com/14945011548149.html#disqus_thread">comments</a>
                       
 
                        
@@ -329,18 +323,6 @@ pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
 	      
 		      
 			      <li class="post">
-			        <a href="14945011765615.html">VSCode1.0更换回英文版本</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="14945011548149.html">简单Scrapy爬虫</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="14945011465578.html">利用pxssh暴力破解ssh密码</a>
 			      </li>
 		     
@@ -354,6 +336,18 @@ pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
 		      
 			      <li class="post">
 			        <a href="14945011244738.html">Scrapy抓取Ajax动态页面</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14945011166438.html">Scrapy——crawlSpider爬虫</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14945011027951.html">Python利用Pexpect模拟ssh交互</a>
 			      </li>
 		     
 		  
@@ -402,6 +396,27 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
       </div>
     </div>
 
+
+<script type="text/javascript">
+    var disqus_shortname = 'mylonly'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'mylonly'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
   
     
 
@@ -424,7 +439,7 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
 
     
 
-
+<script id="dsq-count-scr" src="//mylonly.disqus.com/count.js" async></script>
 
   </body>
 </html>
