@@ -1,0 +1,840 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  独自一人
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="独自一人" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.mylonly.com ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 独自一人</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+       
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="ios.html">iOS</a></li>
+        
+            <li><a href="linux.html">Linux</a></li>
+        
+            <li><a href="python.html">Python</a></li>
+        
+            <li><a href="tools.html">Tools</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="14945010337427.html">
+                
+                  <h1>利用树莓派搭建迅雷远程下载服务器</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>树莓派系统为Raspberry Pi</p>
+</blockquote>
+
+<ol>
+<li><p>树莓派安装迅雷路由器固件<br/>
+可以在迅雷论坛上下载到最新的固件:<a href="http://luyou.xunlei.com/">官网论坛</a>,记得要下arm版本的固件<code>armel_v5te_glibc</code><br/>
+或者下载我共享的这个<a href="http://pan.baidu.com/s/1nvvoX7b">Xware1.0.31_armel_v5te_glibc</a> 提取码:e223<br/>
+在树莓派上解压到某个目录，例如我的是<code>/root/xunlei</code>下面</p>
+
+<pre><code class="language-Shell">unzip Xware1.0.31_armel_v5te_glibc.zip -d /root/xunlei
+</code></pre>
+
+<p>进入<code>/root/xunlei</code>目录 执行:</p>
+
+<pre><code class="language-Shell">./portal
+</code></pre>
+
+<p>稍等片刻，会在最后输出一个激活码，类似下图中涂红的部分</p>
+
+<p><img src="http://pic.mylonly.com/2016-07-13_15:19:59.jpg" alt="2016-07-13_15:19:59.jpg"/>  </p></li>
+<li><p>在迅雷远程下载页面绑定树莓派<br/>
+登录<a href="http://yuancheng.xunlei.com/">迅雷远程下载主页</a>,登录之后，左侧会有一个添加按钮，点击添加按钮，弹出如下界面:<br/>
+<img src="http://pic.mylonly.com/2016-07-13_15:22:45.jpg" alt="2016-07-13_15:22:45.jpg"/></p>
+
+<p>将树莓派上获得的激活码填入框中，点击<code>绑定</code>后左侧就会出现树莓派对应的设备列表了，但是，如果我们此时就在右侧点击<code>新建</code>之后会发现,弹出的新建页面中会提示找不到挂载磁盘，如下图：</p>
+
+<p><img src="http://pic.mylonly.com/2016-07-13_15:25:18.jpg" alt="2016-07-13_15:25:18.jpg"/></p></li>
+<li><p>自定义迅雷的下载目录</p>
+
+<p>进入<code>/mnt</code>目录，创建目录TDDOWNLOAD(名字随意)<br/>
+执行命令:</p>
+
+<pre><code class="language-Shell">mount --bind /data/TDDOWNLOAD /mnt/TDDOWNLOAD
+</code></pre>
+
+<p>其中/data/TDDOWNLOAD就是自定义的下载目录，你可以指定为其他任何目录。</p>
+
+<p>然后再刚刚迅雷固件的解压目录下创建目录<code>etc</code>,同时创建文件<code>thunder_mounts.cfg</code>,编辑此文件</p>
+
+<pre><code class="language-Shell">vim /root/xunlei/etc/thunder_mounts.cfg
+</code></pre>
+
+<p>内容为:</p>
+
+<pre><code class="language-Shell">avaliable_mount_path_pattern
+{
+    /mnt/TDDOWNLOAD
+}
+</code></pre>
+
+<p>保存后重启迅雷路由器固件:</p>
+
+<pre><code class="language-Shell">./root/xunlei/portal
+</code></pre>
+
+<p>再进入远程下载界面新建下载就没有了没挂载磁盘的提示了</p></li>
+<li><p>迅雷路由器固件开机启动</p>
+
+<p>在/etc/init.d/下新建xunlei脚本，写入:</p>
+
+<pre><code>```Shell
+#!/bin/sh
+#
+# Xunlei initscript
+#
+### BEGIN INIT INFO
+# Provides:          xunlei
+# Required-Start:    $network $local_fs $remote_fs
+# Required-Stop::    $network $local_fs $remote_fs
+# Should-Start:      $all
+# Should-Stop:       $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start xunlei at boot time
+# Description:       A downloader
+### END INIT INFO
+
+do_start()
+{
+        ./root/xunlei/portal
+}
+
+do_stop()
+{
+        ./root/xunlei/portal -s
+}
+
+case &quot;$1&quot; in
+  start)
+    do_start
+    ;;
+  stop)
+    do_stop
+    ;;
+esac
+``` 
+</code></pre>
+
+<p>然后将该脚本加入默认自启动中</p>
+
+<pre><code class="language-Shell">update-rc.d xunlei defaults
+</code></pre></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14945010159790.html">
+                
+                  <h1>CentOS中添加Swap交换文件</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1.先检查是否存在Swap文件</p>
+
+<pre><code class="language-Bash">swapon -s #返回的信息为空，说明没有其他交换文件
+</code></pre>
+
+<p>2.创建一个Swap文件，使用dd命令</p>
+
+<pre><code class="language-Bash">##of后面是swap文件的路径，可以自定义，count是swap文件的大小，推荐为内存的2倍
+dd if=/dev/zero of=/home/swap bs=1024 count=1024000
+</code></pre>
+
+<p>3.将swap文件转换成swap格式</p>
+
+<pre><code class="language-Bash">mkswap /home/swap
+</code></pre>
+
+<p>4.将swap文件挂载成swap分区</p>
+
+<pre><code class="language-Bash">swapon /home/swap #创建完成后可以用`free -m`看看是否成功
+</code></pre>
+
+<p>5.让swap文件自动挂载</p>
+
+<pre><code class="language-Bash">vim /etc/fstab 
+#在文件末尾加上下面的命令
+/home/swap swap swap default 0 0 
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14945009892942.html">
+                
+                  <h1>利用Github的Webhook功能和Node.js完成项目的自动部署</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><u>本文对任何提供Webhook的git仓库都适用</u></p>
+
+<p><img src="http://pic.mylonly.com/2016-06-29_14635623250348.jpg" alt="2016-06-29_14635623250348.jpg"/></p>
+
+<h3 id="toc_0">首先完成Node.js服务器的代码构建，先上代码，再解释</h3>
+
+<pre><code class="language-Node.js">var http = require(&#39;http&#39;)
+var createHandler = require(&#39;github-webhook-handler&#39;)
+var handler = createHandler({ path: &#39;/&#39;, secret: &#39;root&#39; })
+// 上面的 secret 保持和 GitHub 后台设置的一致
+
+function run_cmd(cmd, args, callback) {
+  var spawn = require(&#39;child_process&#39;).spawn;
+  var child = spawn(cmd, args);
+  var resp = &quot;&quot;;
+
+  child.stdout.on(&#39;data&#39;, function(buffer) { resp += buffer.toString(); });
+  child.stdout.on(&#39;end&#39;, function() { callback (resp) });
+}
+
+http.createServer(function (req, res) {
+  handler(req, res, function (err) {
+    res.statusCode = 404
+    res.end(&#39;no such location&#39;)
+  })
+}).listen(7777)
+
+handler.on(&#39;error&#39;, function (err) {
+  console.error(&#39;Error:&#39;, err.message)
+})
+
+handler.on(&#39;push&#39;, function (event) {
+  console.log(&#39;Received a push event for %s to %s&#39;,
+    event.payload.repository.name,
+    event.payload.ref);
+    run_cmd(&#39;sh&#39;, [&#39;./deploy.sh&#39;,event.payload.repository.name], function(text){ console.log(text) });
+})
+</code></pre>
+
+<p>上面的代码中用到了一个<code>github-webhook-handler</code>的中间价，你可以用<code>npm install -g github-webhook-handler</code>来全局安装</p>
+
+<p>还有代码这行:<br/>
+<code><br/>
+var handler = createHandler({ path: &#39;/&#39;, secret: &#39;root&#39; }) <br/>
+</code><br/>
+其中secret后的参数是你在github的项目中添加webhook时设置的secret值，替换成自己的就行了</p>
+
+<h3 id="toc_1">完成deploy.sh脚本</h3>
+
+<p>deploy.sh脚本负责进入项目的目录，然后利用git命令拉取最新的代码，还是直接贴代码:</p>
+
+<pre><code class="language-Bash"> #!/bin/bash
+
+WEB_PATH=&#39;/root/tools/&#39;$1
+WEB_USER=&#39;root&#39;
+WEB_USERGROUP=&#39;root&#39;
+
+echo &quot;Start deployment&quot;
+cd $WEB_PATH
+echo &quot;pulling source code...&quot;
+git reset --hard origin/master
+git clean -f
+git pull
+git checkout master
+echo &quot;changing permissions...&quot;
+chown -R $WEB_USER:$WEB_USERGROUP $WEB_PATH
+echo &quot;Finished.&quot;
+</code></pre>
+
+<p>deploy.sh 会接受第一个参数当做项目名字，然后进入这个项目的目录执行git操作，这个参数是在deploy.js中根据hook返回的项目名字来的，代码应该比较容易懂，都是些简单的git命令。</p>
+
+<blockquote>
+<p>如果是全新的项目，需要在你的服务器上先clone要部署的项目<br/>
+你需要根据自己的实际项目位置，修改WEB_PATH的值</p>
+</blockquote>
+
+<h3 id="toc_2">后台运行deploy.js</h3>
+
+<p>利用Linux提供的nohup命令，让deploy.js运行在后台</p>
+
+<pre><code>nohup node deploy.js &gt; deploy.log &amp;
+</code></pre>
+
+<h3 id="toc_3">去Github后台添加webhook</h3>
+
+<p>进入你需要自动部署的项目的github地址，进入项目的设置页面，点击左侧的<code>Webhooks &amp; services</code><br/>
+<img src="http://pic.mylonly.com/2016-06-29_14635620989191.jpg" alt="2016-06-29_14635620989191.jpg"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14944978089747.html">
+                
+                  <h1>Linux常用命令</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li>磁盘挂载</li>
+</ol>
+
+<pre><code>fdisk -l #查看磁盘信息
+mount /dev/xvdb1 /mnt #挂载磁盘
+</code></pre>
+
+<ol>
+<li>设置开机自动加载磁盘</li>
+</ol>
+
+<pre><code>vim /etc/fstab
+写入 /dev/xvdb1 /mnt ext4 default 1 1
+</code></pre>
+
+<ol>
+<li>修改主机名</li>
+</ol>
+
+<pre><code>vim /etc/sysconfig/network #修改里面的HOSTNAME值
+</code></pre>
+
+<ol>
+<li>设置ssh自动认证</li>
+</ol>
+
+<pre><code>ssh-keygen -t rsa #在客户机生成秘钥，
+scp ~/.ssh/id_rsa.pub root@xxx.com:/home/xxx/ #将客户端生成的公钥文件发送到服务器上
+#将id_rsa.pub文件写入服务器的.ssh/authorized_keys中，
+最好用cat命令写入,手动创建authorized_keys文件会出现各种各样的权限认证问题
+cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="14944977278738.html">
+                
+                  <h1>Swift要点</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>(本文所有代码样例全部来自Swift2.0官方文档)</p>
+
+<ol>
+<li><p>Swift类型间不会隐式转换，必须要显式转换。将值转换成字符串除了使用String()显式转换外，还有中简单的方法,如下:</p>
+
+<pre><code class="language-Swift">let apples = 3
+let oranges = 5
+let appleSummary = &quot;I have \(apples) apples.&quot;
+let fruitSummary = &quot;I have \(apples + oranges)  pieces of fruit.&quot;
+</code></pre>
+
+<p>输出:</p>
+
+<pre><code>&quot;I have 3 apples&quot;
+&quot;I have 8 pieces of fruit&quot;
+</code></pre></li>
+<li><p>Swift声明数组或者字典可以声明指定类型</p>
+
+<pre><code class="language-Swift">let emptyArray = [String]()
+let emptyDictionary = [String: Float]()
+</code></pre></li>
+<li><p>if语句中，条件必须是一个布尔表达式,如下:</p>
+
+<pre><code class="language-Swift"> if score &gt; 50 {
+    teamScore += 3
+} else {
+       teamScore += 1
+}
+</code></pre>
+
+<p><code>if 1 {}</code> 这样代码会报错，但是<code>if true{}</code>这样的代码是可  以的。</p></li>
+<li><p>Switch 支持任意类型的数据以及各种比较，不仅仅限于整数以及判断是否相等,而且Switch匹配到相应的子句之后就会推出整个Switch,不需要给每个Switch子句写上break了。</p>
+
+<pre><code class="language-Swift">let vegetable = &quot;red pepper&quot;
+switch vegetable {
+case &quot;celery&quot;:
+    print(&quot;Add some raisins and make ants on a  log.&quot;)
+case &quot;cucumber&quot;, &quot;watercress&quot;:
+    print(&quot;That would make a good tea sandwich.&quot;)
+case let x where x.hasSuffix(&quot;pepper&quot;):
+    print(&quot;Is it a spicy \(x)?&quot;)
+default:
+    print(&quot;Everything tastes good in soup.&quot;)
+}
+</code></pre>
+
+<p><em>Swift 子句中必须要遍历所有可能，否则会报错</em><br/>
+<em>上述代码中的lex表达式将匹配等式的值赋给变量x</em></p></li>
+<li><p>do{}while()被repeat{}while()取代</p>
+
+<pre><code class="language-Swift">var m = 2
+repeat {
+    m = m * 2
+} while m &lt; 100
+print(m)
+</code></pre></li>
+<li><p>循环有更简便的写法,0..&lt;4表示遍历0到4(不包含4，包含4用0...4),传统写法也是支持的。</p>
+
+<pre><code class="language-Swift">var firstForLoop = 0
+for i in 0..&lt;4 {
+    firstForLoop += i
+}
+print(firstForLoop)
+
+var firstForLoop = 0
+for i in 0...4 {
+    firstForLoop += i
+}
+print(firstForLoop)
+</code></pre></li>
+<li><p>函数可以传入可变的参数，参数在函数内表现为数组形式:<br/>
+<code>Swift<br/>
+func sumOf(numbers: Int...) -&gt; Int {<br/>
+var sum = 0<br/>
+for number in numbers {<br/>
+    sum += number<br/>
+}<br/>
+return sum<br/>
+}<br/>
+sumOf()<br/>
+sumOf(42, 597, 12)<br/>
+</code></p></li>
+<li><p>函数可以作为另一个函数的返回值，类似于OC中的block</p>
+
+<pre><code class="language-Swift">func makeIncrementer() -&gt; (Int -&gt; Int) {
+func addOne(number: Int) -&gt; Int {
+    return 1 + number
+}
+return addOne
+}
+var increment = makeIncrementer()
+increment(7)
+</code></pre>
+
+<p>同理，函数也可以当做参数传入函数,</p>
+
+<pre><code class="language-Swift">func hasAnyMatches(list: [Int], condition: Int -&gt;   Bool) -&gt; Bool {
+for item in list {
+    if condition(item) {
+        return true
+    }
+}
+return false
+}
+func lessThanTen(number: Int) -&gt; Bool {
+    return number &lt; 10
+}
+var numbers = [20, 19, 7, 12]
+hasAnyMatches(numbers, condition: lessThanTen)
+</code></pre></li>
+<li><p>子类中，如果需要重写父类的方法，需要使用override标记</p>
+
+<pre><code class="language-Swift">class NamedShape {
+var numberOfSides: Int = 0
+var name: String
+
+init(name: String) {
+    self.name = name
+}
+
+func simpleDescription() -&gt; String {
+        return &quot;A shape with \(numberOfSides) sides.&quot;
+  }
+}
+
+class Square: NamedShape {
+var sideLength: Double
+
+init(sideLength: Double, name: String) {
+    self.sideLength = sideLength
+    super.init(name: name)
+    numberOfSides = 4
+}
+
+func area() -&gt;  Double {
+    return sideLength * sideLength
+}
+
+override func simpleDescription() -&gt; String {
+        return &quot;A square with sides of length \(sideLength).&quot;
+    }
+}
+let test = Square(sideLength: 5.2, name: &quot;my test   square&quot;)
+test.area()
+test.simpleDescription()
+</code></pre></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_1.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_3.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <div class="site-a-logo"><img src="http://pic.mylonly.com/2017-05-11-IMG_1164.JPG" /></div>
+            
+                <h1>独自一人</h1>
+                <div class="site-des">独自一人,独自Coding...</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="http://github.com/mylonly" title="GitHub">GitHub</a>
+<a target="_blank" class="email" href="mailto:root@mylonly.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="ios.html"><strong>iOS</strong></a>
+        
+            <a href="linux.html"><strong>Linux</strong></a>
+        
+            <a href="python.html"><strong>Python</strong></a>
+        
+            <a href="tools.html"><strong>Tools</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="14945011765615.html">VSCode1.0更换回英文版本</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14945011548149.html">简单Scrapy爬虫</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14945011465578.html">利用pxssh暴力破解ssh密码</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14945011328774.html">Scrapy模拟登陆知乎</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14945011244738.html">Scrapy抓取Ajax动态页面</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>
