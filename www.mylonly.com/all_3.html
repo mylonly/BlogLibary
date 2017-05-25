@@ -105,6 +105,93 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="14945011548149.html">
+                
+                  <h1>简单Scrapy爬虫</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>只是个小小的demo，自己测试了下，总共down了20几张图片</p>
+
+<pre><code class="language-Python">#coding: utf-8 #############################################################
+# File Name: spiders/wallpaper.py
+# Author: mylonly
+# mail: tianxianggen@gmail.com
+#Blog:www.mylonly.com
+# Created Time: 2014年09月01日 星期一 14时20分07秒
+#########################################################################
+#!/usr/bin/python
+import urllib2
+import os
+ 
+from scrapy.contrib.spiders import CrawlSpider,Rule
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.selector import Selector
+from mylonly.items import wallpaperItem
+from scrapy.http import Request
+ 
+class wallpaper(CrawlSpider):
+    name = &quot;wallpaperSpider&quot;
+    allowed_domains = [&#39;sj.zol.com.cn&#39;]
+    start_urls = [&#39;http://sj.zol.com.cn/&#39;]
+    number = 0
+    rules = (
+    Rule(SgmlLinkExtractor(allow = (&#39;detail_\d{4}_\d{5}\.html&#39;)),callback =     &#39;parse_image&#39;,follow=True),)
+    def parse_image(self,response):
+        self.log(&#39;hi,this is an item page! %s&#39; % response.url)
+        sel = Selector(response)
+        sites = sel.xpath(&quot;//div[@class=&#39;wrapper        mt15&#39;]//dd[@id=&#39;tagfbl&#39;]//a[@target=&#39;_blank&#39;]/@href&quot;).extract()
+        for site in sites:
+        url = &#39;http://sj.zol.com.cn%s&#39; % (site)
+        print &#39;one page:&#39;,url
+        return Request(url,callback = self.parse_href)
+    def parse_href(self,response):
+        print &#39;I am in:&#39;,response.url
+        sel = Selector(response)
+        src = sel.xpath(&quot;//body//img/@src&quot;).extract()[0]
+        self.download(src)
+ 
+    def download(self,url):
+        self.number += 1
+        savePath = &#39;/mnt/python_image/%d.jpg&#39; % (self.number)
+        print &#39;正在下载...&#39;,url
+        try:
+            u = urllib2.urlopen(url)
+            r = u.read()
+            downloadFile = open(savePath,&#39;wb&#39;)
+            downloadFile.write(r)
+            u.close()
+            downloadFile.close()
+        except:
+            print savePath,&#39;can not download.&#39;
+ 
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/5/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='python.html'>Python</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="14945011166438.html">
                 
                   <h1>Scrapy——crawlSpider爬虫</h1>
@@ -476,6 +563,12 @@ pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
 	      
 		      
 			      <li class="post">
+			        <a href="14957025459875.html">Swift3.0 利用泛型设置基类属性的动态类型</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="14951753262754.html">基于BarrageRender自定义弹幕动画</a>
 			      </li>
 		     
@@ -499,10 +592,6 @@ pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
 		     
 		  
 		      
-			      <li class="post">
-			        <a href="14944977101213.html">Swift学习要点-基础部分</a>
-			      </li>
-		     
 		  
 		      
 		  

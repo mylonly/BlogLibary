@@ -105,6 +105,118 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="14957025459875.html">
+                
+                  <h1>Swift3.0 利用泛型设置基类属性的动态类型</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在MVVM架构的项目中，我们一般会写一个viewModel的基类和一个controller的基类，在controller的对象中持有viewModel,如下代码</p>
+
+<pre><code class="language-Swift">class ViewModel{
+    
+}
+class Controller {
+
+    var viewModel:ViewModel
+    
+    init(viewModel:ViewModel) {
+        self.viewModel = viewModel
+    }
+}
+</code></pre>
+
+<p>然后在每一个具体的页面上，都会写一个对应的viewModel和controller分别继承自上面两个基类</p>
+
+<pre><code class="language-Swift">class Sub1ViewModel:ViewModel{
+    
+    let desc = &quot;Sub1&quot;
+
+}
+class Sub1Controller:Controller{
+    
+}
+</code></pre>
+
+<p>这时如果我想在Sub1Controller中访问Sub1ViewModel中的desc变量，只能在Sub1Controller中这样写</p>
+
+<pre><code class="language-Swift">class Sub1Controller:Controller{
+    var description{
+        let viewModel = self.viewModel as! Sub1ViewModel
+        return viewModel.desc
+    }
+}
+</code></pre>
+
+<p>由于Swift是强类型语言，不能像OC那样通过类型的强制转换来使基类的属性变成子类的类型，所以你每次使用基类的属性的时候都必须要用as强制转换成子类的类型之后才能访问子类的属性或者方法，当然你可以将这个强制转换包装成一个函数，或者提供另一个变量返回强制转换过的类型。</p>
+
+<pre><code class="language-Swift">class Sub1Controller:Controller{
+    var sub1ViewModel:Sub1ViewModel{
+        return self.viewModel as! Sub1ViewModel
+    }
+    var description{
+    //  let viewModel = self.viewModel as! Sub1ViewModel
+        return self.sub1ViewModel.desc  // Or: return self.sub1ViewModel().desc
+    }
+    
+    func sub1ViewModel() -&gt; Sub1ViewModel{
+        return self.viewModel as! Sub1ViewModel
+    }
+} 
+
+</code></pre>
+
+<p>但是这两种方法仍然不够优雅，产生了很多冗余的代码，笔者在实践中尝试着使用泛型来是基类的属性类型动态化，是代码看起来更优雅</p>
+
+<pre><code class="language-Swift">
+class ViewModel{
+}
+
+class Controller&lt;ModelType:ViewModel&gt; {
+    var viewModel:ModelType
+    init(viewModel:ModelType) {
+        self.viewModel = viewModel
+    }
+}
+
+class Sub1ViewModel:ViewModel{  
+    let desc = &quot;Sub1&quot;
+}
+
+class Sub1Controller:Controller&lt;Sub1ViewModel&gt;{
+      var description{
+        return self.viewModel.desc
+    }
+}
+</code></pre>
+
+<p>通过ModelType泛型类型，使得在Sub1Controller中直接通过viewModel就能访问到Sub1ViewModel的属性</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/5/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="14951753262754.html">
                 
                   <h1>基于BarrageRender自定义弹幕动画</h1>
@@ -478,94 +590,6 @@ test.simpleDescription()
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="14944977101213.html">
-                
-                  <h1>Swift学习要点-基础部分</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><img src="http://pic.mylonly.com/2016-06-29_15:09:33.jpg" alt="2016-06-29_15:09:33.jpg"/></p>
-
-<blockquote>
-<p>这一系列的文章都是我本人在学习Swift语法过程中认为需要注意的语法部分，所以介绍的并不会很完整。</p>
-</blockquote>
-
-<ol>
-<li><p>print函数:<code>print(_:separator:terminator:)</code>,默认情况下print会以换行符当做结束符，此外你可以通过terminator参数更改结束符，例如:</p>
-
-<pre><code class="language-Swift">print(&quot;正常的print结尾时换行符&quot;)                  //输出:正常的print结尾时换行符\n
-print(&quot;没有换行符的print&quot;,terminator:&quot;&quot;)         //输出:没有换行符的print
-print(&quot;稀奇古怪的结束符都可以&quot;,terminator:&quot;(^^)&quot;)  //输出:稀奇古怪的结束符都可以(^^)
-</code></pre></li>
-<li><p>数值类字面量，包括整数和浮点数可以添加额外的零并且包含下划线，并不会影响字面量的值</p>
-
-<pre><code class="language-Swift">let paddedDouble = 000123.456
-let oneMillion = 1_000_000
-let justOverOneMillion = 1_000_000.000_000_1
-</code></pre></li>
-<li><p>可以通过<code>typealias</code>关键字来定义类型的别名</p>
-
-<pre><code class="language-Swift">typealias AudioSample = UInt16
-var maxAmplitudeFound = AudioSample.min // maxAmplitudeFound 现在是 0
-</code></pre></li>
-<li><p>不同的数据类型之间不会隐式转换,必须要用类型名加上括号的方式进入显示转换,其中显示转换成字符串除了使用String()之外，还可以直接在字符串中适用(其他类型值)来转换</p>
-
-<pre><code class="language-Swift">var maxValue = UInt8.max
-var max64Value = Int64.max
-
-max64Value = maxValue  //Error:Cannot assign value of type &#39;UInt8&#39; to type &#39;Int64&#39;
-max64Value = Int64(maxValue) //Ok
-
-let number = 3
-var str1 = String(number) //str1 = &quot;3&quot;
-var str2 = &quot;\(number)&quot;    //str2 = &quot;3&quot; 
-</code></pre></li>
-<li><p>如果你只需要一部分元组值，分解的时候可以把要忽略的部分用下划线（_）标记：</p>
-
-<pre><code class="language-Swift">let http404Error = (404, &quot;Not Found&quot;)  // http404Error 的类型是 (Int, String)，值是 (404, &quot;Not Found&quot;)
-let (justTheStatusCode, _) = http404Error
-print(&quot;The status code is \(justTheStatusCode)&quot;) // 输出 &quot;The status code is 404&quot;
-</code></pre></li>
-<li><p>Swift 的<code>nil</code>和 Objective-C 中的<code>nil</code>并不一样。在 Objective-C 中，<code>nil</code>是一个指向不存在对象的指针。在 Swift 中，<code>nil</code>不是指针——它是一个确定的值，用来表示值缺失。任何类型的可选状态都可以被设置为<code>nil</code>，不只是对象类型。</p>
-
-<pre><code class="language-Swift">var serverResponseCode: Int? = 404
-// serverResponseCode 包含一个可选的 Int 值 404
-serverResponseCode = nil
-// serverResponseCode 现在不包含值
-</code></pre></li>
-<li><p>使用!来强制解析值之前，一定要确定可选包含一个非nil的值，否则当强制解析一个nil值时会报错。</p>
-
-<pre><code class="language-Swift">var option:Int?    //没有初始值的可选类型变量默认值为nil
-var str = &quot;\(option)&quot; //输出:&quot;nil&quot;
-str = &quot;\(option!)&quot;    //Error
-</code></pre></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/10/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -643,6 +667,12 @@ str = &quot;\(option!)&quot;    //Error
 	      
 		      
 			      <li class="post">
+			        <a href="14957025459875.html">Swift3.0 利用泛型设置基类属性的动态类型</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="14951753262754.html">基于BarrageRender自定义弹幕动画</a>
 			      </li>
 		     
@@ -666,10 +696,6 @@ str = &quot;\(option!)&quot;    //Error
 		     
 		  
 		      
-			      <li class="post">
-			        <a href="14944977101213.html">Swift学习要点-基础部分</a>
-			      </li>
-		     
 		  
 		      
 		  

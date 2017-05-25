@@ -8,8 +8,8 @@
   独自一人
   
   </title>
-  <meta name="keywords" content="Webhook,自动部署" />
-  <meta name="description" content="利用Github的Webhook功能和Node.js完成项目的自动部署" />
+  <meta name="keywords" content="Scrapy,爬虫,Python-Webkit" />
+  <meta name="description" content="Scrapy抓取Ajax动态页面" />
   <link href="atom.xml" rel="alternate" title="独自一人" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
@@ -104,6 +104,94 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="14944977101213.html">
+                
+                  <h1>Swift学习要点-基础部分</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="http://pic.mylonly.com/2016-06-29_15:09:33.jpg" alt="2016-06-29_15:09:33.jpg"/></p>
+
+<blockquote>
+<p>这一系列的文章都是我本人在学习Swift语法过程中认为需要注意的语法部分，所以介绍的并不会很完整。</p>
+</blockquote>
+
+<ol>
+<li><p>print函数:<code>print(_:separator:terminator:)</code>,默认情况下print会以换行符当做结束符，此外你可以通过terminator参数更改结束符，例如:</p>
+
+<pre><code class="language-Swift">print(&quot;正常的print结尾时换行符&quot;)                  //输出:正常的print结尾时换行符\n
+print(&quot;没有换行符的print&quot;,terminator:&quot;&quot;)         //输出:没有换行符的print
+print(&quot;稀奇古怪的结束符都可以&quot;,terminator:&quot;(^^)&quot;)  //输出:稀奇古怪的结束符都可以(^^)
+</code></pre></li>
+<li><p>数值类字面量，包括整数和浮点数可以添加额外的零并且包含下划线，并不会影响字面量的值</p>
+
+<pre><code class="language-Swift">let paddedDouble = 000123.456
+let oneMillion = 1_000_000
+let justOverOneMillion = 1_000_000.000_000_1
+</code></pre></li>
+<li><p>可以通过<code>typealias</code>关键字来定义类型的别名</p>
+
+<pre><code class="language-Swift">typealias AudioSample = UInt16
+var maxAmplitudeFound = AudioSample.min // maxAmplitudeFound 现在是 0
+</code></pre></li>
+<li><p>不同的数据类型之间不会隐式转换,必须要用类型名加上括号的方式进入显示转换,其中显示转换成字符串除了使用String()之外，还可以直接在字符串中适用(其他类型值)来转换</p>
+
+<pre><code class="language-Swift">var maxValue = UInt8.max
+var max64Value = Int64.max
+
+max64Value = maxValue  //Error:Cannot assign value of type &#39;UInt8&#39; to type &#39;Int64&#39;
+max64Value = Int64(maxValue) //Ok
+
+let number = 3
+var str1 = String(number) //str1 = &quot;3&quot;
+var str2 = &quot;\(number)&quot;    //str2 = &quot;3&quot; 
+</code></pre></li>
+<li><p>如果你只需要一部分元组值，分解的时候可以把要忽略的部分用下划线（_）标记：</p>
+
+<pre><code class="language-Swift">let http404Error = (404, &quot;Not Found&quot;)  // http404Error 的类型是 (Int, String)，值是 (404, &quot;Not Found&quot;)
+let (justTheStatusCode, _) = http404Error
+print(&quot;The status code is \(justTheStatusCode)&quot;) // 输出 &quot;The status code is 404&quot;
+</code></pre></li>
+<li><p>Swift 的<code>nil</code>和 Objective-C 中的<code>nil</code>并不一样。在 Objective-C 中，<code>nil</code>是一个指向不存在对象的指针。在 Swift 中，<code>nil</code>不是指针——它是一个确定的值，用来表示值缺失。任何类型的可选状态都可以被设置为<code>nil</code>，不只是对象类型。</p>
+
+<pre><code class="language-Swift">var serverResponseCode: Int? = 404
+// serverResponseCode 包含一个可选的 Int 值 404
+serverResponseCode = nil
+// serverResponseCode 现在不包含值
+</code></pre></li>
+<li><p>使用!来强制解析值之前，一定要确定可选包含一个非nil的值，否则当强制解析一个nil值时会报错。</p>
+
+<pre><code class="language-Swift">var option:Int?    //没有初始值的可选类型变量默认值为nil
+var str = &quot;\(option)&quot; //输出:&quot;nil&quot;
+str = &quot;\(option!)&quot;    //Error
+</code></pre></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/10/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="14945010480752.html">
                 
@@ -406,125 +494,6 @@ esac
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="14945009892942.html">
-                
-                  <h1>利用Github的Webhook功能和Node.js完成项目的自动部署</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><u>本文对任何提供Webhook的git仓库都适用</u></p>
-
-<p><img src="http://pic.mylonly.com/2016-06-29_14635623250348.jpg" alt="2016-06-29_14635623250348.jpg"/></p>
-
-<h3 id="toc_0">首先完成Node.js服务器的代码构建，先上代码，再解释</h3>
-
-<pre><code class="language-Node.js">var http = require(&#39;http&#39;)
-var createHandler = require(&#39;github-webhook-handler&#39;)
-var handler = createHandler({ path: &#39;/&#39;, secret: &#39;root&#39; })
-// 上面的 secret 保持和 GitHub 后台设置的一致
-
-function run_cmd(cmd, args, callback) {
-  var spawn = require(&#39;child_process&#39;).spawn;
-  var child = spawn(cmd, args);
-  var resp = &quot;&quot;;
-
-  child.stdout.on(&#39;data&#39;, function(buffer) { resp += buffer.toString(); });
-  child.stdout.on(&#39;end&#39;, function() { callback (resp) });
-}
-
-http.createServer(function (req, res) {
-  handler(req, res, function (err) {
-    res.statusCode = 404
-    res.end(&#39;no such location&#39;)
-  })
-}).listen(7777)
-
-handler.on(&#39;error&#39;, function (err) {
-  console.error(&#39;Error:&#39;, err.message)
-})
-
-handler.on(&#39;push&#39;, function (event) {
-  console.log(&#39;Received a push event for %s to %s&#39;,
-    event.payload.repository.name,
-    event.payload.ref);
-    run_cmd(&#39;sh&#39;, [&#39;./deploy.sh&#39;,event.payload.repository.name], function(text){ console.log(text) });
-})
-</code></pre>
-
-<p>上面的代码中用到了一个<code>github-webhook-handler</code>的中间价，你可以用<code>npm install -g github-webhook-handler</code>来全局安装</p>
-
-<p>还有代码这行:<br/>
-<code><br/>
-var handler = createHandler({ path: &#39;/&#39;, secret: &#39;root&#39; }) <br/>
-</code><br/>
-其中secret后的参数是你在github的项目中添加webhook时设置的secret值，替换成自己的就行了</p>
-
-<h3 id="toc_1">完成deploy.sh脚本</h3>
-
-<p>deploy.sh脚本负责进入项目的目录，然后利用git命令拉取最新的代码，还是直接贴代码:</p>
-
-<pre><code class="language-Bash"> #!/bin/bash
-
-WEB_PATH=&#39;/root/tools/&#39;$1
-WEB_USER=&#39;root&#39;
-WEB_USERGROUP=&#39;root&#39;
-
-echo &quot;Start deployment&quot;
-cd $WEB_PATH
-echo &quot;pulling source code...&quot;
-git reset --hard origin/master
-git clean -f
-git pull
-git checkout master
-echo &quot;changing permissions...&quot;
-chown -R $WEB_USER:$WEB_USERGROUP $WEB_PATH
-echo &quot;Finished.&quot;
-</code></pre>
-
-<p>deploy.sh 会接受第一个参数当做项目名字，然后进入这个项目的目录执行git操作，这个参数是在deploy.js中根据hook返回的项目名字来的，代码应该比较容易懂，都是些简单的git命令。</p>
-
-<blockquote>
-<p>如果是全新的项目，需要在你的服务器上先clone要部署的项目<br/>
-你需要根据自己的实际项目位置，修改WEB_PATH的值</p>
-</blockquote>
-
-<h3 id="toc_2">后台运行deploy.js</h3>
-
-<p>利用Linux提供的nohup命令，让deploy.js运行在后台</p>
-
-<pre><code>nohup node deploy.js &gt; deploy.log &amp;
-</code></pre>
-
-<h3 id="toc_3">去Github后台添加webhook</h3>
-
-<p>进入你需要自动部署的项目的github地址，进入项目的设置页面，点击左侧的<code>Webhooks &amp; services</code><br/>
-<img src="http://pic.mylonly.com/2016-06-29_14635620989191.jpg" alt="2016-06-29_14635620989191.jpg"/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/7/2</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='linux.html'>Linux</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -602,6 +571,12 @@ echo &quot;Finished.&quot;
 	      
 		      
 			      <li class="post">
+			        <a href="14957025459875.html">Swift3.0 利用泛型设置基类属性的动态类型</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="14951753262754.html">基于BarrageRender自定义弹幕动画</a>
 			      </li>
 		     
@@ -625,10 +600,6 @@ echo &quot;Finished.&quot;
 		     
 		  
 		      
-			      <li class="post">
-			        <a href="14944977101213.html">Swift学习要点-基础部分</a>
-			      </li>
-		     
 		  
 		      
 		  
