@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[独自一人]]></title>
-  <link href="http://www.mylonly.com/atom.xml" rel="self"/>
-  <link href="http://www.mylonly.com/"/>
-  <updated>2017-05-19T17:03:44+08:00</updated>
-  <id>http://www.mylonly.com/</id>
+  <link href="https://www.mylonly.com/atom.xml" rel="self"/>
+  <link href="https://www.mylonly.com/"/>
+  <updated>2017-06-06T10:31:41+08:00</updated>
+  <id>https://www.mylonly.com/</id>
   <author>
     <name><![CDATA[]]></name>
     
@@ -14,9 +14,9 @@
   
   <entry>
     <title type="html"><![CDATA[Swift3.0 利用泛型设置基类属性的动态类型]]></title>
-    <link href="http://www.mylonly.com/14957025459875.html"/>
+    <link href="https://www.mylonly.com/14957025459875.html"/>
     <updated>2017-05-25T16:55:45+08:00</updated>
-    <id>http://www.mylonly.com/14957025459875.html</id>
+    <id>https://www.mylonly.com/14957025459875.html</id>
     <content type="html"><![CDATA[
 <p>在MVVM架构的项目中，我们一般会写一个viewModel的基类和一个controller的基类，在controller的对象中持有viewModel,如下代码</p>
 
@@ -104,19 +104,17 @@ class Sub1Controller:Controller&lt;Sub1ViewModel&gt;{
   
   <entry>
     <title type="html"><![CDATA[基于BarrageRender自定义弹幕动画]]></title>
-    <link href="http://www.mylonly.com/14951753262754.html"/>
+    <link href="https://www.mylonly.com/14951753262754.html"/>
     <updated>2017-05-19T14:28:46+08:00</updated>
-    <id>http://www.mylonly.com/14951753262754.html</id>
+    <id>https://www.mylonly.com/14951753262754.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p><a href="https://github.com/unash/BarrageRenderer">BarrageRender</a> 是iOS上一个非常出名的弹幕渲染开源框架,其可以让我们在App中非常方便的集成弹幕功能，其作者在代码中提供了两种方式的弹幕动画，<code>BarrageFloatSprite</code>和<code>BarrageWalkSprite</code>。可以说移动和浮动这两种动画方式基本上已经满足了大部分App的需求，但是仍然有部分App需要在弹幕的展现形式上更加的自由，例如各大直播平台的礼物弹幕。笔者将在这篇文章中分享自己在BarrageRender的基础上编写自定义礼物弹幕的过程。</p>
 </blockquote>
 
-<span id="more"></span><!-- more -->
-
 <h3 id="toc_0">先展示效果</h3>
 
-<p><img src="http://pic.mylonly.com/2017-05-19-1234.gif" alt="弹幕效果"/></p>
+<p><img src="https://pic.mylonly.com/2017-05-19-1234.gif" alt="弹幕效果"/></p>
 
 <h3 id="toc_1">再介绍BarrageWalkSprite原理</h3>
 
@@ -538,12 +536,12 @@ return origin;
   
   <entry>
     <title type="html"><![CDATA[树莓派3安装Node.js]]></title>
-    <link href="http://www.mylonly.com/14945010672564.html"/>
+    <link href="https://www.mylonly.com/14945010672564.html"/>
     <updated>2017-05-11T19:11:07+08:00</updated>
-    <id>http://www.mylonly.com/14945010672564.html</id>
+    <id>https://www.mylonly.com/14945010672564.html</id>
     <content type="html"><![CDATA[
 <p>(树莓派官方系统)<br/>
-<img src="http://pic.mylonly.com/2016-06-29_14634631824044.jpg" alt="2016-06-29_14634631824044.jpg"/></p>
+<img src="https://pic.mylonly.com/2016-06-29_14634631824044.jpg" alt="2016-06-29_14634631824044.jpg"/></p>
 
 <pre><code class="language-Bash">wget https://nodejs.org/dist/v5.2.0/node-v5.2.0-linux-armv7l.tar.gz
 tar zxvf node-v5.2.0-linux-armv7l.tar.gz
@@ -561,13 +559,13 @@ node --version
   
   <entry>
     <title type="html"><![CDATA[树莓派3命令行连接WiFi和蓝牙设备]]></title>
-    <link href="http://www.mylonly.com/14945010588526.html"/>
+    <link href="https://www.mylonly.com/14945010588526.html"/>
     <updated>2017-05-11T19:10:58+08:00</updated>
-    <id>http://www.mylonly.com/14945010588526.html</id>
+    <id>https://www.mylonly.com/14945010588526.html</id>
     <content type="html"><![CDATA[
 <p>转载<a href="https://www.embbnux.com/2016/04/10/raspberry_pi_3_wifi_and_bluetooth_setting_on_console/">原文链接</a></p>
 
-<p><img src="http://pic.mylonly.com/2016-06-29_14634631824044.jpg" alt="2016-06-29_14634631824044.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-06-29_14634631824044.jpg" alt="2016-06-29_14634631824044.jpg"/></p>
 
 <h3 id="toc_0">WiFi连接</h3>
 
@@ -657,9 +655,9 @@ sudo apt-get install pulseaudio pulseaudio-module-bluetooth<br/>
   
   <entry>
     <title type="html"><![CDATA[Swift要点]]></title>
-    <link href="http://www.mylonly.com/14944977278738.html"/>
+    <link href="https://www.mylonly.com/14944977278738.html"/>
     <updated>2017-05-11T18:15:27+08:00</updated>
-    <id>http://www.mylonly.com/14944977278738.html</id>
+    <id>https://www.mylonly.com/14944977278738.html</id>
     <content type="html"><![CDATA[
 <p>(本文所有代码样例全部来自Swift2.0官方文档)</p>
 
@@ -814,11 +812,11 @@ test.simpleDescription()
   
   <entry>
     <title type="html"><![CDATA[Swift学习要点-基础部分]]></title>
-    <link href="http://www.mylonly.com/14944977101213.html"/>
+    <link href="https://www.mylonly.com/14944977101213.html"/>
     <updated>2017-05-11T18:15:10+08:00</updated>
-    <id>http://www.mylonly.com/14944977101213.html</id>
+    <id>https://www.mylonly.com/14944977101213.html</id>
     <content type="html"><![CDATA[
-<p><img src="http://pic.mylonly.com/2016-06-29_15:09:33.jpg" alt="2016-06-29_15:09:33.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-06-29_15:09:33.jpg" alt="2016-06-29_15:09:33.jpg"/></p>
 
 <blockquote>
 <p>这一系列的文章都是我本人在学习Swift语法过程中认为需要注意的语法部分，所以介绍的并不会很完整。</p>
@@ -880,9 +878,9 @@ str = &quot;\(option!)&quot;    //Error
   
   <entry>
     <title type="html"><![CDATA[各种程序的安装]]></title>
-    <link href="http://www.mylonly.com/14945010480752.html"/>
+    <link href="https://www.mylonly.com/14945010480752.html"/>
     <updated>2017-05-11T19:10:48+08:00</updated>
-    <id>http://www.mylonly.com/14945010480752.html</id>
+    <id>https://www.mylonly.com/14945010480752.html</id>
     <content type="html"><![CDATA[
 <ol>
 <li>源码安装nginx</li>
@@ -927,9 +925,9 @@ make install
   
   <entry>
     <title type="html"><![CDATA[Linux常用命令]]></title>
-    <link href="http://www.mylonly.com/14944978089747.html"/>
+    <link href="https://www.mylonly.com/14944978089747.html"/>
     <updated>2017-05-11T18:16:48+08:00</updated>
-    <id>http://www.mylonly.com/14944978089747.html</id>
+    <id>https://www.mylonly.com/14944978089747.html</id>
     <content type="html"><![CDATA[
 <ol>
 <li>磁盘挂载</li>
@@ -970,9 +968,9 @@ cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
   
   <entry>
     <title type="html"><![CDATA[利用树莓派搭建迅雷远程下载服务器]]></title>
-    <link href="http://www.mylonly.com/14945010337427.html"/>
+    <link href="https://www.mylonly.com/14945010337427.html"/>
     <updated>2017-05-11T19:10:33+08:00</updated>
-    <id>http://www.mylonly.com/14945010337427.html</id>
+    <id>https://www.mylonly.com/14945010337427.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>树莓派系统为Raspberry Pi</p>
@@ -994,10 +992,10 @@ cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
 
 <p>稍等片刻，会在最后输出一个激活码，类似下图中涂红的部分</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-13_15:19:59.jpg" alt="2016-07-13_15:19:59.jpg"/>  </p></li>
+<p><img src="https://pic.mylonly.com/2016-07-13_15:19:59.jpg" alt="2016-07-13_15:19:59.jpg"/> </p></li>
 <li><p>在迅雷远程下载页面绑定树莓派<br/>
 登录<a href="http://yuancheng.xunlei.com/">迅雷远程下载主页</a>,登录之后，左侧会有一个添加按钮，点击添加按钮，弹出如下界面:<br/>
-<img src="http://pic.mylonly.com/2016-07-13_15:22:45.jpg" alt="2016-07-13_15:22:45.jpg"/></p>
+<img src="https://pic.mylonly.com/2016-07-13_15:22:45.jpg" alt="2016-07-13_15:22:45.jpg"/></p>
 
 <p>将树莓派上获得的激活码填入框中，点击<code>绑定</code>后左侧就会出现树莓派对应的设备列表了，但是，如果我们此时就在右侧点击<code>新建</code>之后会发现,弹出的新建页面中会提示找不到挂载磁盘，如下图：</p>
 
@@ -1084,9 +1082,9 @@ esac
   
   <entry>
     <title type="html"><![CDATA[Scrapy抓取Ajax动态页面]]></title>
-    <link href="http://www.mylonly.com/14945011244738.html"/>
+    <link href="https://www.mylonly.com/14945011244738.html"/>
     <updated>2017-05-11T19:12:04+08:00</updated>
-    <id>http://www.mylonly.com/14945011244738.html</id>
+    <id>https://www.mylonly.com/14945011244738.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p>一般来说爬虫类框架抓取Ajax动态页面都是通过一些第三方的webkit库去手动执行html页面中的js代码， 最后将生产的html代码交给spider分析。本篇文章则是通过浏览器提供的Debug工具分析Ajax页面的具体请求内容，找到获取数据的接口url，直接调用该接口获取数据，省去了引入python-webkit库的麻烦，而且由于一般ajax请求的数据都是结构化数据，这样更省去了我们利用xpath解析html的痛苦。</p>
@@ -1100,23 +1098,23 @@ esac
 
 <p>用Chrome打开淘女郎的首页中的<a href="https://mm.taobao.com/search_tstar_model.htm">美人库</a>，这个页面毫无疑问是会展示所有的模特的信息，同时打开Debug工具，在network选项中查看浏览器发送了哪些请求？</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:11:01.jpg" alt="2016-07-04_16:11:01.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:11:01.jpg" alt="2016-07-04_16:11:01.jpg"/></p>
 
 <p>在截图的左下角可以看到总共产生了86个请求，那么有什么办法可以快速定位到Ajax请求的链接了，利用Network当中提供的Filter功能，选中Filter，最后选择右边的XHR过滤(XHR时XMLHttpRequest对象，一般Ajax请求的数据都是结构化数据)，这样就剩下了为数不多的几个请求，剩下的就靠我们自己一个一个的检查吧</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:22:18.jpg" alt="2016-07-04_16:22:18.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:22:18.jpg" alt="2016-07-04_16:22:18.jpg"/></p>
 
 <p>很幸运，通过分析每个接口返回的request和response信息，发现最后一个请求就是我们需要的接口url</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:25:56.jpg" alt="2016-07-04_16:25:56.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:25:56.jpg" alt="2016-07-04_16:25:56.jpg"/></p>
 
 <p>Request中得参数很简单,根据英文意思就可以猜出意义,由于我们要抓取所有模特的信息，所以不需要定制这些参数，后面直接将这些参数post给接口就行了</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:29:06.jpg" alt="2016-07-04_16:29:06.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:29:06.jpg" alt="2016-07-04_16:29:06.jpg"/></p>
 
 <p>在Response中可以获得到的有用数据有两个:所有模特信息的列表<code>searchDOList</code>、以及总页数<code>totolPage</code></p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:35:05.jpg" alt="2016-07-04_16:35:05.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:35:05.jpg" alt="2016-07-04_16:35:05.jpg"/></p>
 
 <p>searchDOList列表中得对象都有如上图所示的json格式，它也正是我们需要的模特信息的数据</p>
 
@@ -1262,15 +1260,15 @@ class tbModelPipeline(object):
 
 <p>点击进入模特的页面之后发现左侧会有有个相册选项卡，点击后右边出现了各种相册，而每个相册里面都是各种各样的模特照片</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:04:22.jpg" alt="2016-07-04_17:04:22.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:04:22.jpg" alt="2016-07-04_17:04:22.jpg"/></p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:04:49.jpg" alt="2016-07-04_17:04:49.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:04:49.jpg" alt="2016-07-04_17:04:49.jpg"/></p>
 
 <p>通过network的分析，这些页面的数据通通都是Ajax请求获得的，具体的接口如下:</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:09:51.jpg" alt="2016-07-04_17:09:51.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:09:51.jpg" alt="2016-07-04_17:09:51.jpg"/></p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:10:16.jpg" alt="2016-07-04_17:10:16.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:10:16.jpg" alt="2016-07-04_17:10:16.jpg"/></p>
 
 <ol>
 <li><p>获取相册列表的接口是一个GET请求，其中只有一个很重要的user_id，而这个user_id在上面拿去模特的基本信息已经拿到了，还有个page参数用于标识获取的是第几页数据(由于这个是第一页，并没有在url中显现出来，可以通过返回的html中包含的totalPage元素获得)不过这个接口的返回就不是标准的json格式了，而是一段html，这时候又到了利用scrapy中提供的强大的xpath功能了</p>
@@ -1293,9 +1291,9 @@ class tbModelPipeline(object):
 </code></pre></li>
 <li><p>获取相册里照片的接口就是一个完全的json格式的接口了,其中参数包括我们已经拿到的user_id以及album_id，page的最大范围totalPage依然可以通过第一次返回的response中的totalPage字段获得</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:25:23.jpg" alt="2016-07-04_17:25:23.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:25:23.jpg" alt="2016-07-04_17:25:23.jpg"/></p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:25:46.jpg" alt="2016-07-04_17:25:46.jpg"/></p></li>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:25:46.jpg" alt="2016-07-04_17:25:46.jpg"/></p></li>
 </ol>
 
 <h3 id="toc_3">总结</h3>
@@ -1310,13 +1308,13 @@ class tbModelPipeline(object):
   
   <entry>
     <title type="html"><![CDATA[利用Github的Webhook功能和Node.js完成项目的自动部署]]></title>
-    <link href="http://www.mylonly.com/14945009892942.html"/>
+    <link href="https://www.mylonly.com/14945009892942.html"/>
     <updated>2017-05-11T19:09:49+08:00</updated>
-    <id>http://www.mylonly.com/14945009892942.html</id>
+    <id>https://www.mylonly.com/14945009892942.html</id>
     <content type="html"><![CDATA[
 <p><u>本文对任何提供Webhook的git仓库都适用</u></p>
 
-<p><img src="http://pic.mylonly.com/2016-06-29_14635623250348.jpg" alt="2016-06-29_14635623250348.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-06-29_14635623250348.jpg" alt="2016-06-29_14635623250348.jpg"/></p>
 
 <h3 id="toc_0">首先完成Node.js服务器的代码构建，先上代码，再解释</h3>
 
@@ -1400,16 +1398,16 @@ echo &quot;Finished.&quot;
 <h3 id="toc_3">去Github后台添加webhook</h3>
 
 <p>进入你需要自动部署的项目的github地址，进入项目的设置页面，点击左侧的<code>Webhooks &amp; services</code><br/>
-<img src="http://pic.mylonly.com/2016-06-29_14635620989191.jpg" alt="2016-06-29_14635620989191.jpg"/></p>
+<img src="https://pic.mylonly.com/2016-06-29_14635620989191.jpg" alt="2016-06-29_14635620989191.jpg"/></p>
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[利用pxssh暴力破解ssh密码]]></title>
-    <link href="http://www.mylonly.com/14945011465578.html"/>
+    <link href="https://www.mylonly.com/14945011465578.html"/>
     <updated>2017-05-11T19:12:26+08:00</updated>
-    <id>http://www.mylonly.com/14945011465578.html</id>
+    <id>https://www.mylonly.com/14945011465578.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p><mark>关于pxssh</mark><br/>
@@ -1458,7 +1456,7 @@ for line in password_file:
 
 <h4 id="toc_2">测试结果</h4>
 
-<p><img src="http://pic.mylonly.com/2016-06-29_14667836697742.jpg" alt="2016-06-29_14667836697742.jpg"/><br/>
+<p><img src="https://pic.mylonly.com/2016-06-29_14667836697742.jpg" alt="2016-06-29_14667836697742.jpg"/><br/>
 字典文件可以自己生成，或者网上找一些常用字典文件</p>
 
 <h4 id="toc_3">完整代码</h4>
@@ -1518,9 +1516,9 @@ if __name__ == &#39;__main__&#39;:
   
   <entry>
     <title type="html"><![CDATA[Python利用Pexpect模拟ssh交互]]></title>
-    <link href="http://www.mylonly.com/14945011027951.html"/>
+    <link href="https://www.mylonly.com/14945011027951.html"/>
     <updated>2017-05-11T19:11:42+08:00</updated>
-    <id>http://www.mylonly.com/14945011027951.html</id>
+    <id>https://www.mylonly.com/14945011027951.html</id>
     <content type="html"><![CDATA[
 <blockquote>
 <p><mark>关于Pexpect</mark><br/>
@@ -1703,11 +1701,11 @@ if __name__ == &#39;__main__&#39;:
   
   <entry>
     <title type="html"><![CDATA[Scrapy模拟登陆知乎]]></title>
-    <link href="http://www.mylonly.com/14945011328774.html"/>
+    <link href="https://www.mylonly.com/14945011328774.html"/>
     <updated>2017-05-11T19:12:12+08:00</updated>
-    <id>http://www.mylonly.com/14945011328774.html</id>
+    <id>https://www.mylonly.com/14945011328774.html</id>
     <content type="html"><![CDATA[
-<p><img src="http://pic.mylonly.com/2016-06-29_14645998164473.jpg" alt="2016-06-29_14645998164473.jpg"/><br/>
+<p><img src="https://pic.mylonly.com/2016-06-29_14645998164473.jpg" alt="2016-06-29_14645998164473.jpg"/><br/>
 感谢简书作者<code>Andrew_liu</code>提供的思路,虽然知乎改版后，该文章上提供的方法已经失效<a href="http://www.jianshu.com/p/b7f41df6202d">Python爬虫(七)--Scrapy模拟登录<br/>
 </a></p>
 
@@ -1717,14 +1715,14 @@ if __name__ == &#39;__main__&#39;:
 
 <ul>
 <li><p>打开<a href="https://www.zhihu.com,%E5%88%A9%E7%94%A8Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84Debug%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%AE%9A%E4%BD%8D%E5%88%B0%E7%99%BB%E9%99%86%E6%A1%86%E6%89%80%E5%9C%A8%E7%9A%84%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%A6%82%E4%B8%8B%E5%9B%BE%E6%89%80%E7%A4%BA">https://www.zhihu.com,利用Chrome浏览器的Debug功能，定位到登陆框所在的位置，如下图所示</a><br/>
-<img src="http://pic.mylonly.com/2016-06-29_14645980407304.jpg" alt="2016-06-29_14645980407304.jpg"/><br/>
+<img src="https://pic.mylonly.com/2016-06-29_14645980407304.jpg" alt="2016-06-29_14645980407304.jpg"/><br/>
 利用scrapy提供的xpath能很方便的获取到这个值(//div[@data-za-module=&quot;SignInForm&quot;]//form//input[@name=&quot;_xsrf&quot;]/@value&#39;)</p></li>
 <li><p>选中Debug窗口的Network选项，同时在输完账号密码后点击登陆，获取登陆操作后的post请求，见下图:</p></li>
 </ul>
 
-<p><img src="http://pic.mylonly.com/2016-06-29_14645982403637.jpg" alt="2016-06-29_14645982403637.jpg"/><br/>
+<p><img src="https://pic.mylonly.com/2016-06-29_14645982403637.jpg" alt="2016-06-29_14645982403637.jpg"/><br/>
 点击这个链接，确认这个链接就是提交登陆的url<br/>
-<img src="http://pic.mylonly.com/2016-06-29_14645983258011.jpg" alt="2016-06-29_14645983258011.jpg"/><br/>
+<img src="https://pic.mylonly.com/2016-06-29_14645983258011.jpg" alt="2016-06-29_14645983258011.jpg"/><br/>
 从FormData里面可以看到<a href="https://www.zhihu.com/email/login%E5%B0%B1%E6%98%AF%E7%99%BB%E9%99%86POST%E8%AF%B7%E6%B1%82%E7%9A%84url%EF%BC%8C%E9%9C%80%E8%A6%81%E6%8F%90%E4%BA%A44%E4%B8%AA%E5%8F%82%E6%95%B0%EF%BC%8C%E5%85%B6%E4%B8%AD_xsrf%E5%B0%B1%E6%98%AF%E9%A6%96%E9%A1%B5%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84%E9%9A%90%E8%97%8F%E8%A1%A8%E5%8D%95%E5%8F%82%E6%95%B0%EF%BC%8Cremember_me%E6%98%AF%E6%98%AF%E5%90%A6%E8%AE%B0%E4%BD%8Fcookie%E7%9A%84%E5%BC%80%E5%85%B3%EF%BC%8Cemail%E5%92%8Cpassword%E5%AF%B9%E5%BA%94%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81">https://www.zhihu.com/email/login就是登陆POST请求的url，需要提交4个参数，其中_xsrf就是首页可以获取到的隐藏表单参数，remember_me是是否记住cookie的开关，email和password对应账号和密码</a></p>
 
 <blockquote>
@@ -1881,12 +1879,12 @@ class zhihuSpider(CrawlSpider):
   
   <entry>
     <title type="html"><![CDATA[VSCode1.0更换回英文版本]]></title>
-    <link href="http://www.mylonly.com/14945011765615.html"/>
+    <link href="https://www.mylonly.com/14945011765615.html"/>
     <updated>2017-05-11T19:12:56+08:00</updated>
-    <id>http://www.mylonly.com/14945011765615.html</id>
+    <id>https://www.mylonly.com/14945011765615.html</id>
     <content type="html"><![CDATA[
 <p>VSCode1.0更新之后带来了本地语言的支持，但是，你怎么能连命令行的命令都汉化了？<br/>
-<img src="http://pic.mylonly.com/2016-05-04-14623468922061.jpg" alt=""/><br/>
+<img src="https://pic.mylonly.com/2016-05-04-14623468922061.jpg" alt=""/><br/>
 <code>表示实在受不了每次同步代码 选中git:拉的感觉，还有安装插件的命令也不再是install extension了，而是安装扩展</code></p>
 
 <h3 id="toc_0">将VSCode的语言修改为英文</h3>
@@ -1910,9 +1908,9 @@ class zhihuSpider(CrawlSpider):
   
   <entry>
     <title type="html"><![CDATA[简单Scrapy爬虫]]></title>
-    <link href="http://www.mylonly.com/14945011548149.html"/>
+    <link href="https://www.mylonly.com/14945011548149.html"/>
     <updated>2017-05-11T19:12:34+08:00</updated>
-    <id>http://www.mylonly.com/14945011548149.html</id>
+    <id>https://www.mylonly.com/14945011548149.html</id>
     <content type="html"><![CDATA[
 <p>只是个小小的demo，自己测试了下，总共down了20几张图片</p>
 
@@ -1975,9 +1973,9 @@ class wallpaper(CrawlSpider):
   
   <entry>
     <title type="html"><![CDATA[Scrapy——crawlSpider爬虫]]></title>
-    <link href="http://www.mylonly.com/14945011166438.html"/>
+    <link href="https://www.mylonly.com/14945011166438.html"/>
     <updated>2017-05-11T19:11:56+08:00</updated>
-    <id>http://www.mylonly.com/14945011166438.html</id>
+    <id>https://www.mylonly.com/14945011166438.html</id>
     <content type="html"><![CDATA[
 <p>Scrapy中的BaseSpider爬虫类只能抓取start_urls中提供的链接，而利用Scrapy提供的crawlSpider类可以很方便的自动解析网页上符合要求的链接，从而达到爬虫自动抓取的功能。<br/>
  <br/>
@@ -2122,16 +2120,16 @@ class wallpaperPipeline(object):
  <br/>
  <br/>
 本例中我将传回的items数据存放到了数据库中，如果你不想这样，可以将我注释掉的self.download()取消注释，不反悔items，就可以将找到的所有图片链接全部下载下来，不过要找个大点的地方存储，因为总共有5W多条：<br/>
-<img src="http://pic.mylonly.com/2016-06-29_061712481319744.png" alt="2016-06-29_061712481319744.png"/></p>
+<img src="https://pic.mylonly.com/2016-06-29_061712481319744.png" alt="2016-06-29_061712481319744.png"/></p>
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[CentOS中添加Swap交换文件]]></title>
-    <link href="http://www.mylonly.com/14945010159790.html"/>
+    <link href="https://www.mylonly.com/14945010159790.html"/>
     <updated>2017-05-11T19:10:15+08:00</updated>
-    <id>http://www.mylonly.com/14945010159790.html</id>
+    <id>https://www.mylonly.com/14945010159790.html</id>
     <content type="html"><![CDATA[
 <p>1.先检查是否存在Swap文件</p>
 
@@ -2166,11 +2164,11 @@ dd if=/dev/zero of=/home/swap bs=1024 count=1024000
   
   <entry>
     <title type="html"><![CDATA[CocoaPods master仓库替换为国内源]]></title>
-    <link href="http://www.mylonly.com/14944975766543.html"/>
+    <link href="https://www.mylonly.com/14944975766543.html"/>
     <updated>2017-05-11T18:12:56+08:00</updated>
-    <id>http://www.mylonly.com/14944975766543.html</id>
+    <id>https://www.mylonly.com/14944975766543.html</id>
     <content type="html"><![CDATA[
-<p><img src="http://pic.mylonly.com/2016-06-29_1396084357114.jpg" alt="2016-06-29_1396084357114.jpg"/><br/>
+<p><img src="https://pic.mylonly.com/2016-06-29_1396084357114.jpg" alt="2016-06-29_1396084357114.jpg"/><br/>
 国内用CocoaPods 实在是太蛋疼了，一个pod update都要等好久，之前唐巧博客里面推荐的那个国内源已经不可用了，还好今天在V2EX上看到有人提供了别的CocoaPods源。</p>
 
 <ol>

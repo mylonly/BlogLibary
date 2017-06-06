@@ -137,23 +137,23 @@
 
 <p>用Chrome打开淘女郎的首页中的<a href="https://mm.taobao.com/search_tstar_model.htm">美人库</a>，这个页面毫无疑问是会展示所有的模特的信息，同时打开Debug工具，在network选项中查看浏览器发送了哪些请求？</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:11:01.jpg" alt="2016-07-04_16:11:01.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:11:01.jpg" alt="2016-07-04_16:11:01.jpg"/></p>
 
 <p>在截图的左下角可以看到总共产生了86个请求，那么有什么办法可以快速定位到Ajax请求的链接了，利用Network当中提供的Filter功能，选中Filter，最后选择右边的XHR过滤(XHR时XMLHttpRequest对象，一般Ajax请求的数据都是结构化数据)，这样就剩下了为数不多的几个请求，剩下的就靠我们自己一个一个的检查吧</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:22:18.jpg" alt="2016-07-04_16:22:18.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:22:18.jpg" alt="2016-07-04_16:22:18.jpg"/></p>
 
 <p>很幸运，通过分析每个接口返回的request和response信息，发现最后一个请求就是我们需要的接口url</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:25:56.jpg" alt="2016-07-04_16:25:56.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:25:56.jpg" alt="2016-07-04_16:25:56.jpg"/></p>
 
 <p>Request中得参数很简单,根据英文意思就可以猜出意义,由于我们要抓取所有模特的信息，所以不需要定制这些参数，后面直接将这些参数post给接口就行了</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:29:06.jpg" alt="2016-07-04_16:29:06.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:29:06.jpg" alt="2016-07-04_16:29:06.jpg"/></p>
 
 <p>在Response中可以获得到的有用数据有两个:所有模特信息的列表<code>searchDOList</code>、以及总页数<code>totolPage</code></p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_16:35:05.jpg" alt="2016-07-04_16:35:05.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_16:35:05.jpg" alt="2016-07-04_16:35:05.jpg"/></p>
 
 <p>searchDOList列表中得对象都有如上图所示的json格式，它也正是我们需要的模特信息的数据</p>
 
@@ -299,15 +299,15 @@ class tbModelPipeline(object):
 
 <p>点击进入模特的页面之后发现左侧会有有个相册选项卡，点击后右边出现了各种相册，而每个相册里面都是各种各样的模特照片</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:04:22.jpg" alt="2016-07-04_17:04:22.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:04:22.jpg" alt="2016-07-04_17:04:22.jpg"/></p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:04:49.jpg" alt="2016-07-04_17:04:49.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:04:49.jpg" alt="2016-07-04_17:04:49.jpg"/></p>
 
 <p>通过network的分析，这些页面的数据通通都是Ajax请求获得的，具体的接口如下:</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:09:51.jpg" alt="2016-07-04_17:09:51.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:09:51.jpg" alt="2016-07-04_17:09:51.jpg"/></p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:10:16.jpg" alt="2016-07-04_17:10:16.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:10:16.jpg" alt="2016-07-04_17:10:16.jpg"/></p>
 
 <ol>
 <li><p>获取相册列表的接口是一个GET请求，其中只有一个很重要的user_id，而这个user_id在上面拿去模特的基本信息已经拿到了，还有个page参数用于标识获取的是第几页数据(由于这个是第一页，并没有在url中显现出来，可以通过返回的html中包含的totalPage元素获得)不过这个接口的返回就不是标准的json格式了，而是一段html，这时候又到了利用scrapy中提供的强大的xpath功能了</p>
@@ -330,9 +330,9 @@ class tbModelPipeline(object):
 </code></pre></li>
 <li><p>获取相册里照片的接口就是一个完全的json格式的接口了,其中参数包括我们已经拿到的user_id以及album_id，page的最大范围totalPage依然可以通过第一次返回的response中的totalPage字段获得</p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:25:23.jpg" alt="2016-07-04_17:25:23.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:25:23.jpg" alt="2016-07-04_17:25:23.jpg"/></p>
 
-<p><img src="http://pic.mylonly.com/2016-07-04_17:25:46.jpg" alt="2016-07-04_17:25:46.jpg"/></p></li>
+<p><img src="https://pic.mylonly.com/2016-07-04_17:25:46.jpg" alt="2016-07-04_17:25:46.jpg"/></p></li>
 </ol>
 
 <h3 id="toc_3">总结</h3>
@@ -396,7 +396,7 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="http://pic.mylonly.com/2017-05-11-IMG_1164.JPG" /></div>
+                <div class="site-a-logo"><img src="https://pic.mylonly.com/2017-05-11-IMG_1164.JPG" /></div>
             
                 <h1>独自一人</h1>
                 <div class="site-des">独自一人,独自Coding...</div>
@@ -410,7 +410,7 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
 
 
 
-<a target="_blank" class="github" target="_blank" href="http://github.com/mylonly" title="GitHub">GitHub</a>
+<a target="_blank" class="github" target="_blank" href="https://github.com/mylonly" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:root@mylonly.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 

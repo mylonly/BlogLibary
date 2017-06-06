@@ -114,7 +114,7 @@
                         
                         	<p><u>本文对任何提供Webhook的git仓库都适用</u></p>
 
-<p><img src="http://pic.mylonly.com/2016-06-29_14635623250348.jpg" alt="2016-06-29_14635623250348.jpg"/></p>
+<p><img src="https://pic.mylonly.com/2016-06-29_14635623250348.jpg" alt="2016-06-29_14635623250348.jpg"/></p>
 
 <h3 id="toc_0">首先完成Node.js服务器的代码构建，先上代码，再解释</h3>
 
@@ -198,7 +198,7 @@ echo &quot;Finished.&quot;
 <h3 id="toc_3">去Github后台添加webhook</h3>
 
 <p>进入你需要自动部署的项目的github地址，进入项目的设置页面，点击左侧的<code>Webhooks &amp; services</code><br/>
-<img src="http://pic.mylonly.com/2016-06-29_14635620989191.jpg" alt="2016-06-29_14635620989191.jpg"/></p>
+<img src="https://pic.mylonly.com/2016-06-29_14635620989191.jpg" alt="2016-06-29_14635620989191.jpg"/></p>
 
                         
                       </div>
@@ -295,7 +295,7 @@ echo &quot;Finished.&quot;
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="http://pic.mylonly.com/2016-06-29_14645998164473.jpg" alt="2016-06-29_14645998164473.jpg"/><br/>
+                        	<p><img src="https://pic.mylonly.com/2016-06-29_14645998164473.jpg" alt="2016-06-29_14645998164473.jpg"/><br/>
 感谢简书作者<code>Andrew_liu</code>提供的思路,虽然知乎改版后，该文章上提供的方法已经失效<a href="http://www.jianshu.com/p/b7f41df6202d">Python爬虫(七)--Scrapy模拟登录<br/>
 </a></p>
 
@@ -305,14 +305,14 @@ echo &quot;Finished.&quot;
 
 <ul>
 <li><p>打开<a href="https://www.zhihu.com,%E5%88%A9%E7%94%A8Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84Debug%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%AE%9A%E4%BD%8D%E5%88%B0%E7%99%BB%E9%99%86%E6%A1%86%E6%89%80%E5%9C%A8%E7%9A%84%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%A6%82%E4%B8%8B%E5%9B%BE%E6%89%80%E7%A4%BA">https://www.zhihu.com,利用Chrome浏览器的Debug功能，定位到登陆框所在的位置，如下图所示</a><br/>
-<img src="http://pic.mylonly.com/2016-06-29_14645980407304.jpg" alt="2016-06-29_14645980407304.jpg"/><br/>
+<img src="https://pic.mylonly.com/2016-06-29_14645980407304.jpg" alt="2016-06-29_14645980407304.jpg"/><br/>
 利用scrapy提供的xpath能很方便的获取到这个值(//div[@data-za-module=&quot;SignInForm&quot;]//form//input[@name=&quot;_xsrf&quot;]/@value&#39;)</p></li>
 <li><p>选中Debug窗口的Network选项，同时在输完账号密码后点击登陆，获取登陆操作后的post请求，见下图:</p></li>
 </ul>
 
-<p><img src="http://pic.mylonly.com/2016-06-29_14645982403637.jpg" alt="2016-06-29_14645982403637.jpg"/><br/>
+<p><img src="https://pic.mylonly.com/2016-06-29_14645982403637.jpg" alt="2016-06-29_14645982403637.jpg"/><br/>
 点击这个链接，确认这个链接就是提交登陆的url<br/>
-<img src="http://pic.mylonly.com/2016-06-29_14645983258011.jpg" alt="2016-06-29_14645983258011.jpg"/><br/>
+<img src="https://pic.mylonly.com/2016-06-29_14645983258011.jpg" alt="2016-06-29_14645983258011.jpg"/><br/>
 从FormData里面可以看到<a href="https://www.zhihu.com/email/login%E5%B0%B1%E6%98%AF%E7%99%BB%E9%99%86POST%E8%AF%B7%E6%B1%82%E7%9A%84url%EF%BC%8C%E9%9C%80%E8%A6%81%E6%8F%90%E4%BA%A44%E4%B8%AA%E5%8F%82%E6%95%B0%EF%BC%8C%E5%85%B6%E4%B8%AD_xsrf%E5%B0%B1%E6%98%AF%E9%A6%96%E9%A1%B5%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84%E9%9A%90%E8%97%8F%E8%A1%A8%E5%8D%95%E5%8F%82%E6%95%B0%EF%BC%8Cremember_me%E6%98%AF%E6%98%AF%E5%90%A6%E8%AE%B0%E4%BD%8Fcookie%E7%9A%84%E5%BC%80%E5%85%B3%EF%BC%8Cemail%E5%92%8Cpassword%E5%AF%B9%E5%BA%94%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81">https://www.zhihu.com/email/login就是登陆POST请求的url，需要提交4个参数，其中_xsrf就是首页可以获取到的隐藏表单参数，remember_me是是否记住cookie的开关，email和password对应账号和密码</a></p>
 
 <blockquote>
@@ -496,7 +496,7 @@ class zhihuSpider(CrawlSpider):
                       <div class="a-content-text">
                         
                         	<p>VSCode1.0更新之后带来了本地语言的支持，但是，你怎么能连命令行的命令都汉化了？<br/>
-<img src="http://pic.mylonly.com/2016-05-04-14623468922061.jpg" alt=""/><br/>
+<img src="https://pic.mylonly.com/2016-05-04-14623468922061.jpg" alt=""/><br/>
 <code>表示实在受不了每次同步代码 选中git:拉的感觉，还有安装插件的命令也不再是install extension了，而是安装扩展</code></p>
 
 <h3 id="toc_0">将VSCode的语言修改为英文</h3>
@@ -561,7 +561,7 @@ class zhihuSpider(CrawlSpider):
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <div class="site-a-logo"><img src="http://pic.mylonly.com/2017-05-11-IMG_1164.JPG" /></div>
+                <div class="site-a-logo"><img src="https://pic.mylonly.com/2017-05-11-IMG_1164.JPG" /></div>
             
                 <h1>独自一人</h1>
                 <div class="site-des">独自一人,独自Coding...</div>
@@ -575,7 +575,7 @@ class zhihuSpider(CrawlSpider):
 
 
 
-<a target="_blank" class="github" target="_blank" href="http://github.com/mylonly" title="GitHub">GitHub</a>
+<a target="_blank" class="github" target="_blank" href="https://github.com/mylonly" title="GitHub">GitHub</a>
 <a target="_blank" class="email" href="mailto:root@mylonly.com" title="Email">Email</a>
   <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
                 
