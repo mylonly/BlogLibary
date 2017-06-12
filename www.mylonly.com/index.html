@@ -105,6 +105,172 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="14972546183511.html">
+                
+                  <h1>CentOS6 安装部署Zabbix</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>Zabbix是一个基于WEB界面的提供分布式系统监视以及网络监视功能的企业级的开源解决方案。zabbix能监视各种网络参数，保证服务器系统的安全运营；并提供灵活的通知机制以让系统管理员快速定位/解决存在的各种问题。</p>
+</blockquote>
+
+<h2 id="toc_0">部署LAMP|LNMP环境</h2>
+
+<p>由于Zabbix的Web管理页面是由php写的，所以需要服务器PHP环境的支持，Linux部署LAMP或者LNMP的教程很多，在此就不在赘述。<br/>
+需要注意的是:Zabbix支持的PHP最低版本是PHP5.4,而目前CentOS6中通过yum安装的php版本为5.3，所以最好采用源码编译安装。<br/>
+当然，如果你觉得自己搞不定源码安装的各种编译参数，本文也给出一种yum安装php5.5版本的方法</p>
+
+<h3 id="toc_1">Yum 安装PHP5.5</h3>
+
+<ol>
+<li>CentOS6安装PHP5.5源
+<code>rpm -ivh http://mirror.webtatic.com/yum/el6/latest.rpm</code></li>
+<li>安装php5.5
+<code>yum install php55w php55w-gd php55w-mbstring php55w-mysql php55w-fpm php55w-bcmath php55w-xmlreader php55w-xmlwriter</code></li>
+</ol>
+
+<p>修改PHP配置，编辑/etc/php.ini,修改下列参数</p>
+
+<pre><code>max_execution_time = 300
+max_input_time = 300
+memory_limit = 128M
+post_max_size = 32M
+date.timezone = Asia/Shanghai
+</code></pre>
+
+<h2 id="toc_2">zabbix数据库</h2>
+
+<ol>
+<li>从<a href="http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/3.2.6/zabbix-3.2.6.tar.gz/download%5D">zabbix-3.2.6</a>下载最新版本的zabbix源码并解压至当前目录</li>
+<li>进入mysql数据库  <code>mysql -u root -p</code></li>
+<li>创建zabbix数据库 <code>create database zabbix character set utf8;</code></li>
+<li>创建zabbix用户并给与进入zabbix数据库的权限（用户名:zabbix,密码:123456） `grant all privileges on zabbix.* to zabbix@&#39;%&#39; identified by &#39;123456&#39;;</li>
+<li>刷新系统权限表 <code>flush privileges;</code></li>
+<li><p>进入之前下载的zabbix源码目录，找到database文件夹，里面有<code>schema.sql</code>、<code>images.sql</code>、<code>data.sql</code>，将这三个sql文件依次导入之前创建好的zabbix数据库中（PS,请按照schema-&gt;images-&gt;data的顺序依次导入，否则会出错）</p>
+
+<pre><code>mysql&gt; use zabbix;
+mysql&gt; source /root/zabbix-3.2.6/database/schema.sql;
+mysql&gt; source /root/zabbix-3.2.6/database/images.sql;
+mysql&gt; source /root/zabbix-3.2.6/database/data.sql;
+</code></pre></li>
+</ol>
+
+<h2 id="toc_3">添加zabbix用户和组</h2>
+
+<pre><code>groupadd zabbix
+useradd -g zabbix -m zabbix
+</code></pre>
+
+<h2 id="toc_4">安装zabbix其他依赖包</h2>
+
+<pre><code>yum install net-snmp-devel curl curl-devel mysql-devel
+</code></pre>
+
+<h2 id="toc_5">编译安装zabbix</h2>
+
+<ol>
+<li><p>进入zabbix源码根目录，生成makefile</p>
+
+<pre><code>./configure --prefix=/usr/local/zabbix --with-mysql --with-net-snmp --with-libcurl --enable-server --enable-agent --enable-proxy
+</code></pre></li>
+<li><p>安装</p>
+
+<pre><code>make
+make install
+</code></pre></li>
+</ol>
+
+<h2 id="toc_6">添加zabbix服务对应的端口</h2>
+
+<pre><code>vim /etc/services ##在文件中加入以下端口
+zabbix-agent 10050/tcp # Zabbix Agent
+zabbix-agent 10050/udp # Zabbix Agent
+zabbix-trapper 10051/tcp # Zabbix Trapper
+zabbix-trapper 10051/udp # Zabbix Trapper
+</code></pre>
+
+<h2 id="toc_7">修改zabbix配置</h2>
+
+<ol>
+<li><p>修改 /usr/local/zabbix/etc/zabbix_server.conf</p>
+
+<pre><code>DBName=zabbix #数据库名称
+
+DBUser=zabbix #数据库用户名
+
+DBPassword=123456 #数据库密码
+
+ListenIP=127.0.0.1 #数据库ip地址
+
+AlertScriptsPath=/usr/local/zabbix/share/zabbix/alertscripts #zabbix运行脚本存放目录
+</code></pre></li>
+<li><p>修改 /usr/local/zabbix/etc/zabbix_agentd.conf</p>
+
+<pre><code>Include=/usr/local/zabbix/etc/zabbix_agentd.conf.d/
+</code></pre></li>
+</ol>
+
+<h2 id="toc_8">让zabbix开机启动</h2>
+
+<ol>
+<li><p>拷贝可执行文件至init.d目录</p>
+
+<pre><code>cp /usr/local/zabbix/sbin/zabbix_server /etc/rc.d/init.d/zabbix_server  #服务端
+cp /usr/local/zabbix/sbin/zabbix_agentd /etc/rc.d/init.d/zabbix_agentd  #客户端
+</code></pre></li>
+<li><p>添加脚本执行权限</p>
+
+<pre><code>chmod +x /etc/rc.d/init.d/zabbix_server
+chmod +x /etc/rc.d/init.d/zabbix_agentd 
+</code></pre></li>
+<li><p>加入开机启动</p>
+
+<pre><code>chkconfig zabbix_server on
+chkconfig zabbix_agentd on
+</code></pre></li>
+<li><p>修改开启启动脚本中zabbix的安装路径,分别用vim打开/etc/rc.d/init.d/zabbix_server和/etc/rc.d/init.d/zabbix_agentd,修改BASEDIR参数为/usr/local/zabbix</p>
+
+<pre><code>BASEDIR=/usr/local/zabbix/ #zabbix安装目录
+</code></pre></li>
+</ol>
+
+<h2 id="toc_9">安装zabbix web管理页面</h2>
+
+<ol>
+<li><p>拷贝zabbix源码当中的frontends/php下面的所有文件至web服务器的根目录，重启web服务器，如果你的LNMP环境或者LAMP环境没有问题的话，浏览器中输入服务器地址应该会出现zabbix的setup页面</p></li>
+<li><p>点击next按钮，之后会检测zabbix所需要的条件是否完全支持(PS:缺少什么就安装什么，一定要全部OK才可继续下去)</p></li>
+<li><p>之后会出现连接数据库的页面,填入之前创建zabbix数据库时的信息</p></li>
+<li><p>第4步出现当前zabbix服务器的一些基本信息，name填一下</p></li>
+<li><p>安装向导会自动在服务器根目录下的conf下创建一个zabbix.conf.php文件,如果你的根目录权限设置不正确导致向导无法写入文件，这时就需要你手动将这个文件上传到服务器的正确目录</p></li>
+<li><p>一切OK之后就会出现登录页面，初始用户名admin,初始密码zabbix</p></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2017/6/12</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='linux.html'>Linux</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="14957025459875.html">
                 
                   <h1>Swift3.0 利用泛型设置基类属性的动态类型</h1>
@@ -833,185 +999,6 @@ sudo apt-get install pulseaudio pulseaudio-module-bluetooth<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="14944977278738.html">
-                
-                  <h1>Swift要点</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>(本文所有代码样例全部来自Swift2.0官方文档)</p>
-
-<ol>
-<li><p>Swift类型间不会隐式转换，必须要显式转换。将值转换成字符串除了使用String()显式转换外，还有中简单的方法,如下:</p>
-
-<pre><code class="language-Swift">let apples = 3
-let oranges = 5
-let appleSummary = &quot;I have \(apples) apples.&quot;
-let fruitSummary = &quot;I have \(apples + oranges)  pieces of fruit.&quot;
-</code></pre>
-
-<p>输出:</p>
-
-<pre><code>&quot;I have 3 apples&quot;
-&quot;I have 8 pieces of fruit&quot;
-</code></pre></li>
-<li><p>Swift声明数组或者字典可以声明指定类型</p>
-
-<pre><code class="language-Swift">let emptyArray = [String]()
-let emptyDictionary = [String: Float]()
-</code></pre></li>
-<li><p>if语句中，条件必须是一个布尔表达式,如下:</p>
-
-<pre><code class="language-Swift"> if score &gt; 50 {
-    teamScore += 3
-} else {
-       teamScore += 1
-}
-</code></pre>
-
-<p><code>if 1 {}</code> 这样代码会报错，但是<code>if true{}</code>这样的代码是可  以的。</p></li>
-<li><p>Switch 支持任意类型的数据以及各种比较，不仅仅限于整数以及判断是否相等,而且Switch匹配到相应的子句之后就会推出整个Switch,不需要给每个Switch子句写上break了。</p>
-
-<pre><code class="language-Swift">let vegetable = &quot;red pepper&quot;
-switch vegetable {
-case &quot;celery&quot;:
-    print(&quot;Add some raisins and make ants on a  log.&quot;)
-case &quot;cucumber&quot;, &quot;watercress&quot;:
-    print(&quot;That would make a good tea sandwich.&quot;)
-case let x where x.hasSuffix(&quot;pepper&quot;):
-    print(&quot;Is it a spicy \(x)?&quot;)
-default:
-    print(&quot;Everything tastes good in soup.&quot;)
-}
-</code></pre>
-
-<p><em>Swift 子句中必须要遍历所有可能，否则会报错</em><br/>
-<em>上述代码中的lex表达式将匹配等式的值赋给变量x</em></p></li>
-<li><p>do{}while()被repeat{}while()取代</p>
-
-<pre><code class="language-Swift">var m = 2
-repeat {
-    m = m * 2
-} while m &lt; 100
-print(m)
-</code></pre></li>
-<li><p>循环有更简便的写法,0..&lt;4表示遍历0到4(不包含4，包含4用0...4),传统写法也是支持的。</p>
-
-<pre><code class="language-Swift">var firstForLoop = 0
-for i in 0..&lt;4 {
-    firstForLoop += i
-}
-print(firstForLoop)
-
-var firstForLoop = 0
-for i in 0...4 {
-    firstForLoop += i
-}
-print(firstForLoop)
-</code></pre></li>
-<li><p>函数可以传入可变的参数，参数在函数内表现为数组形式:<br/>
-<code>Swift<br/>
-func sumOf(numbers: Int...) -&gt; Int {<br/>
-var sum = 0<br/>
-for number in numbers {<br/>
-    sum += number<br/>
-}<br/>
-return sum<br/>
-}<br/>
-sumOf()<br/>
-sumOf(42, 597, 12)<br/>
-</code></p></li>
-<li><p>函数可以作为另一个函数的返回值，类似于OC中的block</p>
-
-<pre><code class="language-Swift">func makeIncrementer() -&gt; (Int -&gt; Int) {
-func addOne(number: Int) -&gt; Int {
-    return 1 + number
-}
-return addOne
-}
-var increment = makeIncrementer()
-increment(7)
-</code></pre>
-
-<p>同理，函数也可以当做参数传入函数,</p>
-
-<pre><code class="language-Swift">func hasAnyMatches(list: [Int], condition: Int -&gt;   Bool) -&gt; Bool {
-for item in list {
-    if condition(item) {
-        return true
-    }
-}
-return false
-}
-func lessThanTen(number: Int) -&gt; Bool {
-    return number &lt; 10
-}
-var numbers = [20, 19, 7, 12]
-hasAnyMatches(numbers, condition: lessThanTen)
-</code></pre></li>
-<li><p>子类中，如果需要重写父类的方法，需要使用override标记</p>
-
-<pre><code class="language-Swift">class NamedShape {
-var numberOfSides: Int = 0
-var name: String
-
-init(name: String) {
-    self.name = name
-}
-
-func simpleDescription() -&gt; String {
-        return &quot;A shape with \(numberOfSides) sides.&quot;
-  }
-}
-
-class Square: NamedShape {
-var sideLength: Double
-
-init(sideLength: Double, name: String) {
-    self.sideLength = sideLength
-    super.init(name: name)
-    numberOfSides = 4
-}
-
-func area() -&gt;  Double {
-    return sideLength * sideLength
-}
-
-override func simpleDescription() -&gt; String {
-        return &quot;A square with sides of length \(sideLength).&quot;
-    }
-}
-let test = Square(sideLength: 5.2, name: &quot;my test   square&quot;)
-test.area()
-test.simpleDescription()
-</code></pre></li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/10/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='ios.html'>iOS</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1089,6 +1076,12 @@ test.simpleDescription()
 	      
 		      
 			      <li class="post">
+			        <a href="14972546183511.html">CentOS6 安装部署Zabbix</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="14957025459875.html">Swift3.0 利用泛型设置基类属性的动态类型</a>
 			      </li>
 		     
@@ -1112,10 +1105,6 @@ test.simpleDescription()
 		     
 		  
 		      
-			      <li class="post">
-			        <a href="14944977278738.html">Swift要点</a>
-			      </li>
-		     
 		  
 		      
 		  
