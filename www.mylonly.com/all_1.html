@@ -346,6 +346,15 @@ serverResponseCode = nil
 var str = &quot;\(option)&quot; //输出:&quot;nil&quot;
 str = &quot;\(option!)&quot;    //Error
 </code></pre></li>
+<li><p>常量的值一旦被确定就不能修改，但是用let声明常量时可以不必紧跟其后为其设置初始值。</p>
+
+<pre><code class="language-Swift">let const_a:String
+if (condition){
+    const_a = &quot;a&quot;
+}else{
+    const_a = &quot;b&quot;
+}
+</code></pre></li>
 </ol>
 
                         

@@ -4,7 +4,7 @@
   <title><![CDATA[独自一人]]></title>
   <link href="https://www.mylonly.com/atom.xml" rel="self"/>
   <link href="https://www.mylonly.com/"/>
-  <updated>2017-06-12T17:08:28+08:00</updated>
+  <updated>2017-06-30T09:45:50+08:00</updated>
   <id>https://www.mylonly.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -255,6 +255,8 @@ class Sub1Controller:Controller&lt;Sub1ViewModel&gt;{
 <blockquote>
 <p><a href="https://github.com/unash/BarrageRenderer">BarrageRender</a> 是iOS上一个非常出名的弹幕渲染开源框架,其可以让我们在App中非常方便的集成弹幕功能，其作者在代码中提供了两种方式的弹幕动画，<code>BarrageFloatSprite</code>和<code>BarrageWalkSprite</code>。可以说移动和浮动这两种动画方式基本上已经满足了大部分App的需求，但是仍然有部分App需要在弹幕的展现形式上更加的自由，例如各大直播平台的礼物弹幕。笔者将在这篇文章中分享自己在BarrageRender的基础上编写自定义礼物弹幕的过程。</p>
 </blockquote>
+
+<p><mark><em>BarrageRender目前已更新到2.0.1,自定义弹幕的机制有改变，本篇文章的代码在2.0.1下不起作用，如果想按照本文中用的方法，请使用1.9.1版本的BarrageRender。后续会更新2.0.1版本下的自定义弹幕</em></mark></p>
 
 <h3 id="toc_0">先展示效果</h3>
 
@@ -1014,6 +1016,15 @@ serverResponseCode = nil
 <pre><code class="language-Swift">var option:Int?    //没有初始值的可选类型变量默认值为nil
 var str = &quot;\(option)&quot; //输出:&quot;nil&quot;
 str = &quot;\(option!)&quot;    //Error
+</code></pre></li>
+<li><p>常量的值一旦被确定就不能修改，但是用let声明常量时可以不必紧跟其后为其设置初始值。</p>
+
+<pre><code class="language-Swift">let const_a:String
+if (condition){
+    const_a = &quot;a&quot;
+}else{
+    const_a = &quot;b&quot;
+}
 </code></pre></li>
 </ol>
 
