@@ -112,87 +112,7 @@
                       
                       <div class="a-content-text">
                         
-                        	<p>在MVVM架构的项目中，我们一般会写一个viewModel的基类和一个controller的基类，在controller的对象中持有viewModel,如下代码</p>
-
-<pre><code class="language-Swift">class ViewModel{
-    
-}
-class Controller {
-
-    var viewModel:ViewModel
-    
-    init(viewModel:ViewModel) {
-        self.viewModel = viewModel
-    }
-}
-</code></pre>
-
-<p>然后在每一个具体的页面上，都会写一个对应的viewModel和controller分别继承自上面两个基类</p>
-
-<pre><code class="language-Swift">class Sub1ViewModel:ViewModel{
-    
-    let desc = &quot;Sub1&quot;
-
-}
-class Sub1Controller:Controller{
-    
-}
-</code></pre>
-
-<p>这时如果我想在Sub1Controller中访问Sub1ViewModel中的desc变量，只能在Sub1Controller中这样写</p>
-
-<pre><code class="language-Swift">class Sub1Controller:Controller{
-    var description{
-        let viewModel = self.viewModel as! Sub1ViewModel
-        return viewModel.desc
-    }
-}
-</code></pre>
-
-<p>由于Swift是强类型语言，不能像OC那样通过类型的强制转换来使基类的属性变成子类的类型，所以你每次使用基类的属性的时候都必须要用as强制转换成子类的类型之后才能访问子类的属性或者方法，当然你可以将这个强制转换包装成一个函数，或者提供另一个变量返回强制转换过的类型。</p>
-
-<pre><code class="language-Swift">class Sub1Controller:Controller{
-    var sub1ViewModel:Sub1ViewModel{
-        return self.viewModel as! Sub1ViewModel
-    }
-    var description{
-    //  let viewModel = self.viewModel as! Sub1ViewModel
-        return self.sub1ViewModel.desc  // Or: return self.sub1ViewModel().desc
-    }
-    
-    func sub1ViewModel() -&gt; Sub1ViewModel{
-        return self.viewModel as! Sub1ViewModel
-    }
-} 
-
-</code></pre>
-
-<p>但是这两种方法仍然不够优雅，产生了很多冗余的代码，笔者在实践中尝试着使用泛型来是基类的属性类型动态化，是代码看起来更优雅</p>
-
-<pre><code class="language-Swift">
-class ViewModel{
-}
-
-class Controller&lt;ModelType:ViewModel&gt; {
-    var viewModel:ModelType
-    init(viewModel:ModelType) {
-        self.viewModel = viewModel
-    }
-}
-
-class Sub1ViewModel:ViewModel{  
-    let desc = &quot;Sub1&quot;
-}
-
-class Sub1Controller:Controller&lt;Sub1ViewModel&gt;{
-      var description{
-        return self.viewModel.desc
-    }
-}
-</code></pre>
-
-<p>通过ModelType泛型类型，使得在Sub1Controller中直接通过viewModel就能访问到Sub1ViewModel的属性</p>
-
+                        	Swift3.0 利用泛型设置基类属性的动态类型
                         
                       </div>
                   </div>
@@ -1085,6 +1005,12 @@ pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
 	      
 		      
 			      <li class="post">
+			        <a href="15052000291680.html">利用Scrapy-Splash抓取JS动态渲染的网页数据</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="14972546183511.html">CentOS6 安装部署Zabbix</a>
 			      </li>
 		     
@@ -1104,12 +1030,6 @@ pod &#39;AFNetworking&#39;, &#39;~&gt; 1.3.4&#39;
 		      
 			      <li class="post">
 			        <a href="14945010672564.html">树莓派3安装Node.js</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="14945010588526.html">树莓派3命令行连接WiFi和蓝牙设备</a>
 			      </li>
 		     
 		  
@@ -1187,14 +1107,13 @@ Theme used <a target="_blank" href="https://github.com">GitHub CSS</a>.</p>
     
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-101900133-1', 'auto');
-  ga('send', 'pageview');
-
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6d4f2f6760a5d2778c062a1a7df8c960";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 
   </body>
